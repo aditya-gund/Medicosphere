@@ -1,0 +1,146 @@
+.GetStartedWrapper {
+  background-image: url("../../../../public/blueTexture.jpg");
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+}
+
+.GetStarted {
+  width: 80%;
+  height: 70%;
+  min-width: 300px;
+  background-color: #ee5253;
+  background-image: url("../../../../public/GetStartedBackground2.jpg");
+  background-size: cover;
+  background-blend-mode: luminosity;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.GetStarted > div {
+  min-width: 290px;
+  height: 95%;
+  border-radius: 10px;
+}
+
+.Intro {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.Motto {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-width: 300px;
+  font-size: large;
+}
+
+.StatementContainer {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  grid-auto-rows: 30px;
+  row-gap: 20px;
+  width: 60%;
+  min-width: 250px;
+}
+
+.Options {
+  background-color: white;
+  color: black;
+  width: 60%;
+  height: 85% !important;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ActiveMode {
+  height: 30px;
+  width: 70%;
+  color: #8395a7;
+  transition: all 0.3s ease-in-out;
+}
+
+.ActiveMode > span {
+  cursor: context-menu;
+  transition: all 0.2s;
+}
+
+.active {
+  color: red;
+  font-size: x-large;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ActiveMode > span:not(.active) {
+    cursor: pointer;
+  }
+
+.GetStartedForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  width: 90%;
+  min-height: 200px;
+  margin-top: 12%;
+  flex: 1;
+  overflow: visible;
+}
+
+.GetStartedForm > input {
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+
+.GetStartedForm > input:not([type="submit"]) {
+  width: 70%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  height: 35px;
+  flex-shrink: 0;
+  background-color: gainsboro;
+}
+
+.GetStartedForm > input[type="submit"] {
+  width: 30%;
+  height: 30px;
+  margin-top: auto;
+  margin-bottom: 20px;
+  border: 2px solid red;
+  color: red;
+  font-size: large;
+  height: 50px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+
+@media only screen and (max-width: 800px) {
+    .Intro{
+        display: none;
+    }
+
+    .GetStartedForm > input[type="submit"]{
+        height: 25px;
+        width: 120px;
+        font-size: medium;
+        font-weight: 400;
+    }
+}
