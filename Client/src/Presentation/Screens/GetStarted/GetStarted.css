@@ -1,5 +1,6 @@
 .GetStartedWrapper {
-  background-image: url("../../../../public/blueTexture.jpg");
+  background: linear-gradient(120deg, #f0f0f0, #cccccc);
+  /* background-image: url("../../../../public/blueTexture.jpg"); */
   height: 100%;
   width: 100%;
   display: flex;
