@@ -1,7 +1,8 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GetStarted from "./Presentation/Screens/GetStarted/GetStarted";
-import NotFound from "./Presentation/Screens/NotFound/NotFound";
+import { RedirectNotFound } from "./Presentation/Screens/NotFound/NotFound";
+import Home from "./Presentation/Screens/Home/Home";
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<GetStarted />} />
-          <Route path="/*" element={<NotFound />} />
+          <Route path="/Home/*" element={<Home />} />
+          <Route path="/*" element={<RedirectNotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
