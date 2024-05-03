@@ -38,9 +38,9 @@ function Login(setSignupMode, form, login) {
         <span className="active">Login</span>
         <span onClick={() => setSignupMode()}> / Signup</span>
       </div>
-      <form className="GetStartedForm" ref={form} onSubmit={() => login()}>
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+      <form className="GetStartedForm" ref={form} onSubmit={(e) => login(e)}>
+        <input type="email" placeholder="Email" name="email" />
+        <input type="password" placeholder="Password" name="password" />
         <input type="submit" value="LOGIN" key={'submitButton'}/>
       </form>
     </>
@@ -54,12 +54,12 @@ function Signup(setLoginMode, form, signup) {
         <span onClick={() => setLoginMode()}>Login / </span>
         <span className="active">Signup</span>
       </div>
-      <form className="GetStartedForm" ref={form} onSubmit={() => signup()}>
-        <input type="text" placeholder="First Name" />
-        <input type="text" placeholder="Last Name" />
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <input type="password" placeholder="Confirm Password" />
+      <form className="GetStartedForm" ref={form} onSubmit={(e) => signup(e)}>
+        <input type="text" placeholder="First Name" name="firstName" />
+        <input type="text" placeholder="Last Name" name="lastName" />
+        <input type="email" placeholder="Email" name="email" />
+        <input type="password" placeholder="Password" name="password" />
+        <input type="password" placeholder="Confirm Password" name="confirmPassword" />
         <input type="submit" value="SIGNUP" key={'submitButton'}/>
       </form>
     </>

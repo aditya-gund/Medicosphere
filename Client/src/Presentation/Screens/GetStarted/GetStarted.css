@@ -80,7 +80,7 @@
   transition: all 0.2s;
 }
 
-.active {
+.ActiveMode>.active {
   color: red;
   font-size: x-large;
   font-weight: 600;
