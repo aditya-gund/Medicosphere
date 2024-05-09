@@ -41,7 +41,7 @@ function Login(setSignupMode, form, login) {
       <form className="GetStartedForm" ref={form} onSubmit={(e) => login(e)}>
         <input type="email" placeholder="Email" name="email" />
         <input type="password" placeholder="Password" name="password" />
-        <input type="submit" value="LOGIN" key={'submitButton'}/>
+        <input type="submit" value="LOGIN" key={"submitButton"} />
       </form>
     </>
   );
@@ -59,8 +59,17 @@ function Signup(setLoginMode, form, signup) {
         <input type="text" placeholder="Last Name" name="lastName" />
         <input type="email" placeholder="Email" name="email" />
         <input type="password" placeholder="Password" name="password" />
-        <input type="password" placeholder="Confirm Password" name="confirmPassword" />
-        <input type="submit" value="SIGNUP" key={'submitButton'}/>
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          name="confirmPassword"
+        />
+        <select name="role" defaultValue={"Audience"}>
+          <option value="Audience" >Audience</option>
+          <option value="Manager">Manager</option>
+          <option value="Admin">Admin</option>
+        </select>
+        <input type="submit" value="SIGNUP" key={"submitButton"} />
       </form>
     </>
   );
