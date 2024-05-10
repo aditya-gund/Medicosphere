@@ -19,8 +19,8 @@ public class EventService {
     private final EventRepository eventRepository;
     private static final AtomicInteger eventCounter = new AtomicInteger(1);
 
-    @Autowired
-    public EventService(EventRepository eventRepository) {
+    
+    public EventService(@Autowired EventRepository eventRepository) {
         this.eventRepository = eventRepository;
     }
 

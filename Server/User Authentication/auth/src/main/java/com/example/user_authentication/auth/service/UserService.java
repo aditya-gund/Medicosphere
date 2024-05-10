@@ -12,6 +12,7 @@ import com.example.user_authentication.auth.exception_handler.exception.InvalidC
 import com.example.user_authentication.auth.exception_handler.exception.UserEmailAlreadyRegistered;
 import com.example.user_authentication.auth.model.User;
 import com.example.user_authentication.auth.repository.UserRepo;
+import com.example.user_authentication.auth.utils.ERole;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -27,13 +28,18 @@ public class UserService implements UserDetailsService {
             throw new InvalidCredentials();
     }
 
-    public User store(User user) throws UserEmailAlreadyRegistered {
-        User exists = (User) userRepo.findByEmail(user.getEmail());
+    public User store(String firstname, String lastname, String email, String password, ERole role) throws UserEmailAlreadyRegistered {
+        User exists = (User) userRepo.findByEmail(email);
         if (exists != null)
             throw new UserEmailAlreadyRegistered();
         else {
-            user.setPassword(encoder.encode(user.getPassword()));
-            return userRepo.save(user);
+            User save = new User();
+            save.setFirstname(firstname);
+            save.setLastname(lastname);
+            save.setEmail(email);
+            save.setRole(role);
+            save.setPassword(encoder.encode(password));
+            return userRepo.save(save);
         }
     }
 

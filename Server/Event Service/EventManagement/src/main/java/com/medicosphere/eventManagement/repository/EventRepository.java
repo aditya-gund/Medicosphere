@@ -25,14 +25,5 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 
     List<Event> findByTopic(String topic);
 
-    // Additional CRUD operations
-    @Override
-    Event save(Event event);
-
-    @Override
-    List<Event> findAll();
-
-    @Override
-    void deleteById(Long id);
 }
 

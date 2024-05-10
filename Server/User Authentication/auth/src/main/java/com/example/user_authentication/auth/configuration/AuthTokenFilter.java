@@ -3,6 +3,7 @@ package com.example.user_authentication.auth.configuration;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,13 +32,16 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     SecurityContextRepository securityContextRepository = new RequestAttributeSecurityContextRepository();
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-            throws ServletException, IOException {
+    protected void doFilterInternal(
+            @NonNull HttpServletRequest request,
+            @NonNull HttpServletResponse response,
+            @NonNull FilterChain filterChain)
+            throws ServletException,
+            IOException {
         // cookie based authentication filter
-        
+
         String uri = request.getRequestURL().toString();
-        if(!(uri.endsWith("/user/login") || uri.endsWith("/user/signup")))
-        {
+        if (!(uri.endsWith("/user/login") || uri.endsWith("/user/signup"))) {
             String token = null;
             if (request.getCookies() != null) {
                 for (Cookie cookie : request.getCookies()) {
@@ -46,11 +50,9 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                     }
                 }
             }
-            if(token != null)
-            {
+            if (token != null) {
                 String email = jwtUtil.extractUserEmail(token);
-                if (email != null) 
-                {
+                if (email != null) {
                     UserDetails user = userService.loadUserByUsername(email);
                     if (jwtUtil.tokenIsValid(token, user)) {
                         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user,

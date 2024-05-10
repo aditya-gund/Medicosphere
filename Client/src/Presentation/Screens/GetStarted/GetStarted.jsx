@@ -65,9 +65,9 @@ function Signup(setLoginMode, form, signup) {
           name="confirmPassword"
         />
         <select name="role" defaultValue={"Audience"}>
-          <option value="Audience" >Audience</option>
-          <option value="Manager">Manager</option>
-          <option value="Admin">Admin</option>
+          <option value="AUDIENCE" >Audience</option>
+          <option value="MANAGER">Manager</option>
+          <option value="ADMIN">Admin</option>
         </select>
         <input type="submit" value="SIGNUP" key={"submitButton"} />
       </form>

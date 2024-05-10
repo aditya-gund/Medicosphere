@@ -12,9 +12,9 @@ async function Login(email, password) {
   }
 }
 
-async function Signup(firstName, lastName, email, password) {
+async function Signup(firstName, lastName, email, password, role) {
   try {
-    const { data } = await signup(firstName, lastName, email, password);
+    const { data } = await signup(firstName, lastName, email, password, role);
     return { data, error: null };
   } catch (error) {
     return { data: null, error: error };

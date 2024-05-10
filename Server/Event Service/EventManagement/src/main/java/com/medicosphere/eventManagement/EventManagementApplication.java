@@ -8,7 +8,6 @@ public class EventManagementApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EventManagementApplication.class, args);
-		System.out.println("Hello World!");
 	}
 
 }

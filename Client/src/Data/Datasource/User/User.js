@@ -7,9 +7,9 @@ async function login(email, password) {
   return axios.post(call, { email, password });
 }
 
-async function signup(firstName, lastName, email, password) {
+async function signup(firstname, lastname, email, password, role) {
   const call = link + "/signup";
-  return axios.post(call, { firstName, lastName, email, password });
+  return axios.post(call, { firstname, lastname, email, password, role });
 }
 
 export { login, signup };

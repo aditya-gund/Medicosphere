@@ -3,15 +3,15 @@ package com.example.user_authentication.auth.DTO;
 import com.example.user_authentication.auth.model.User;
 import com.example.user_authentication.auth.utils.ERole;
 
-public class UserDTO {
+public class ResponseUserDTO {
 
     String firstname, lastname, email;
     ERole role;
 
-    public UserDTO() {
+    public ResponseUserDTO() {
     }
 
-    public UserDTO(User user) {
+    public ResponseUserDTO(User user) {
         this.firstname = user.getFirstname();
         this.lastname = user.getLastname();
         this.email = user.getEmail();
@@ -50,22 +50,22 @@ public class UserDTO {
         this.role = role;
     }
 
-    public UserDTO firstname(String firstname) {
+    public ResponseUserDTO firstname(String firstname) {
         setFirstname(firstname);
         return this;
     }
 
-    public UserDTO lastname(String lastname) {
+    public ResponseUserDTO lastname(String lastname) {
         setLastname(lastname);
         return this;
     }
 
-    public UserDTO email(String email) {
+    public ResponseUserDTO email(String email) {
         setEmail(email);
         return this;
     }
 
-    public UserDTO role(ERole role) {
+    public ResponseUserDTO role(ERole role) {
         setRole(role);
         return this;
     }

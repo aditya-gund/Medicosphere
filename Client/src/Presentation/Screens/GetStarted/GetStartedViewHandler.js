@@ -23,7 +23,6 @@ function GetStartedViewHandler() {
 
   function login(e) {
     e.preventDefault();
-    console.log("Called");
     const values = new FormData(form.current);
     const email = values.get("email");
     const password = values.get("password");
@@ -58,9 +57,18 @@ function GetStartedViewHandler() {
     const firstName = values.get("firstName");
     const lastName = values.get("lastName");
     const confirmPassword = values.get("confirmPassword");
+    const role = values.get("role");
+
+    console.log("Trying to signup");
+    console.log(email);
+    console.log(password);
+    console.log(firstName);
+    console.log(lastName);
+    console.log(role);
+    
 
     if (confirmPassword === password) {
-      Signup(firstName, lastName, email, password).then(({ data, error }) => {
+      Signup(firstName, lastName, email, password, role).then(({ data, error }) => {
         if (data) {
           setUser(data.firstname, data.lastname, data.email, data.role);
           navigate("/home");
