@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.function.Function;
 
 import javax.crypto.SecretKey;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -25,11 +26,13 @@ public class JwtUtil {
 
     public String generateToken(String email) {
         SecretKey key = Keys.hmacShaKeyFor(SECRET.getBytes(StandardCharsets.UTF_8));
-        return Jwts.builder()
-                .subject(email)
-                .expiration(new Date(new Date().getTime() + EXPIRATION_TIME))
-                .signWith(key)
-                .compact();
+        Date expiry = new Date(new Date().getTime() + EXPIRATION_TIME);
+        String token = Jwts.builder()
+        .subject(email)
+        .expiration(expiry)
+        .signWith(key)
+        .compact();
+        return token;
     }
 
     public String extractUserEmail(String token) {

@@ -1,26 +1,33 @@
 package com.example.user_authentication.auth.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseCookie;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.user_authentication.auth.DTO.UserDTO;
 import com.example.user_authentication.auth.DTO.UserLoginDTO;
-import com.example.user_authentication.auth.DTO.UserToken;
 import com.example.user_authentication.auth.exception_handler.exception.InvalidCredentials;
 import com.example.user_authentication.auth.model.User;
 import com.example.user_authentication.auth.service.UserService;
 import com.example.user_authentication.auth.utils.JwtUtil;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
+@CrossOrigin
 @RequestMapping("/user")
 public class UserController {
-
     @Autowired
     UserService userService;
     @Autowired
@@ -34,15 +41,35 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public @ResponseBody UserToken login(@RequestBody UserLoginDTO user) throws InvalidCredentials {
-        return new UserToken(userService.authenticate(user.getEmail(), user.getPassword()),
-                jwtUtil.generateToken(user.getEmail()));
+    public ResponseEntity<UserDTO> login(@RequestBody UserLoginDTO user, HttpServletResponse res)
+            throws InvalidCredentials {
+        String token = jwtUtil.generateToken(user.getEmail());
+        UserDTO response = new UserDTO(
+                userService.authenticate(user.getEmail(),
+                        user.getPassword()));
+        ResponseCookie cookie = ResponseCookie
+                .from("accessToken", token)
+                .secure(false)
+                .httpOnly(true)
+                .maxAge(120000)
+                .build();
+        res.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping("/signup")
-    public UserToken postMethodName(@RequestBody User user) throws Exception {
+    public ResponseEntity<UserDTO> postMethodName(@RequestBody User user, HttpServletResponse res) throws Exception {
         User saved = userService.store(user);
-        return new UserToken(saved, jwtUtil.generateToken(saved.getEmail()));
+        String token = jwtUtil.generateToken(user.getEmail());
+        UserDTO response = new UserDTO(saved);
+        ResponseCookie cookie = ResponseCookie
+                .from("accessToken", token)
+                .secure(false)
+                .httpOnly(true)
+                .maxAge(120000)
+                .build();
+        res.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }

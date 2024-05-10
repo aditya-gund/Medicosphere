@@ -17,10 +17,13 @@ function GetStartedViewHandler() {
 
   function login(e) {
     e.preventDefault();
+    console.log("Called");
     const values = new FormData(form.current);
     const email = values.get("email");
     const password = values.get("password");
     Login(email, password).then(({ data, error }) => {
+      console.log("Response from inside");
+      console.log(data);
       if (data === true) {
         navigate("/home", { state: { email } });
       } else if (data === false) {

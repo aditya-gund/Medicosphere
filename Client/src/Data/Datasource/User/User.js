@@ -1,6 +1,6 @@
 //actual code to call existing java api will be written here using axios
-const link = "http://localhost:8080/user";
 import axios from "axios";
+const link = "http://localhost:8080/user";
 
 async function login(email, password) {
   const call = link + "/login";
