@@ -1,11 +1,17 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Login, Signup } from "../../../Data/Domain/User/User";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../Context/UserContext";
 
 function GetStartedViewHandler() {
   const [screenMode, setScreenMode] = useState("login");
   const form = useRef();
   const navigate = useNavigate();
+  const { setUser } = useUser();
+
+  useEffect(() => {
+    setUser();
+  }, [setUser]);
 
   function setLoginMode() {
     setScreenMode("login");
@@ -22,16 +28,25 @@ function GetStartedViewHandler() {
     const email = values.get("email");
     const password = values.get("password");
     Login(email, password).then(({ data, error }) => {
-      console.log("Response from inside");
-      console.log(data);
-      if (data === true) {
-        navigate("/home", { state: { email } });
-      } else if (data === false) {
-        alert("Invalid username or password");
+
+      if (data) {
+        setUser(data.firstname, data.lastname, data.email, data.role);
+        navigate("/home");
       } else {
-        alert("An error has occurred. Check console for more information.");
-        console.log(error);
+        if (error && (error.response.status === 401 || error.response.status === 403)) {
+          alert("Invalid email or password");
+        } else {
+          alert("Oops!!! Looks like the api has some issues");
+        }
       }
+      // if (data === true) {
+      //   navigate("/home", { state: { email } });
+      // } else if (data === false) {
+      //   alert("Invalid username or password");
+      // } else {
+      //   alert("An error has occurred. Check console for more information.");
+      //   console.log(error);
+      // }
     });
   }
 
@@ -46,16 +61,15 @@ function GetStartedViewHandler() {
 
     if (confirmPassword === password) {
       Signup(firstName, lastName, email, password).then(({ data, error }) => {
-        if (data === true) {
-          navigate("/home", { state: { email } });
-        }
-        else if(data === false)
-        {
-            alert("Email is already registered to an existing account");
-        } 
-        else {
-          alert("An error has occurred. Check console for more information.");
-          console.log(error);
+        if (data) {
+          setUser(data.firstname, data.lastname, data.email, data.role);
+          navigate("/home");
+        } else {
+          if (error && (error.response.status === 401 || error.response.status === 403)) {
+            alert("Invalid email or password");
+          } else {
+            alert("Oops!!! Looks like the api has some issues");
+          }
         }
       });
     } else {

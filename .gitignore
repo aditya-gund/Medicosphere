@@ -21,4 +21,4 @@ Client/.env.production.local
 Client/npm-debug.log*
 Client/yarn-debug.log*
 Client/yarn-error.log*
-node_modules
+Client/node_modules
