@@ -21,7 +21,7 @@ public class Event {
     private String topic;
 
     @Column(nullable = false)
-    private String speaker;
+    private String host;
 
     @Column(nullable = false)
     private LocalDate date;
@@ -43,11 +43,11 @@ public class Event {
         // Default constructor
     }
 
-    public Event(String eventId, String product, String topic, String speaker, LocalDate date, String time, String city, String state, String country) {
+    public Event(String eventId, String product, String topic, String host, LocalDate date, String time, String city, String state, String country) {
         this.eventId = eventId;
         this.product = product;
         this.topic = topic;
-        this.speaker = speaker;
+        this.host = host;
         this.date = date;
         this.time = time;
         this.city = city;
@@ -88,12 +88,12 @@ public class Event {
         this.topic = topic;
     }
 
-    public String getSpeaker() {
-        return speaker;
+    public String getHost() {
+        return host;
     }
 
-    public void setSpeaker(String speaker) {
-        this.speaker = speaker;
+    public void setHost(String host) {
+        this.host = host;
     }
 
     public LocalDate getDate() {
@@ -144,7 +144,7 @@ public class Event {
                 ", eventId='" + eventId + '\'' +
                 ", product='" + product + '\'' +
                 ", topic='" + topic + '\'' +
-                ", speaker='" + speaker + '\'' +
+                ", host='" + host + '\'' +
                 ", date=" + date +
                 ", time='" + time + '\'' +
                 ", city='" + city + '\'' +

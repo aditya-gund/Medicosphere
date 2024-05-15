@@ -10,16 +10,19 @@ import com.medicosphere.eventManagement.repository.EventRepository;
 import jakarta.persistence.EntityNotFoundException;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 @Transactional
 public class EventService {
 
     private final EventRepository eventRepository;
-    private static final AtomicInteger eventCounter = new AtomicInteger(1);
 
-    
+    @Autowired
+    SequenceService sequenceService;
+    // changing event id generation strategy as it is causing errors when restarting
+    // application in initial requests for creation of new events
+    // private static final AtomicInteger eventCounter = new AtomicInteger(1);
+
     public EventService(@Autowired EventRepository eventRepository) {
         this.eventRepository = eventRepository;
     }
@@ -33,7 +36,7 @@ public class EventService {
     }
 
     public Event createEvent(Event event) {
-        String eventId = generateEventId();
+        String eventId = sequenceService.getNext();
         event.setEventId(eventId);
         return eventRepository.save(event);
     }
@@ -58,14 +61,10 @@ public class EventService {
         return existingEvent;
     }
 
-    private String generateEventId() {
-        return "Event" + String.format("%05d", eventCounter.getAndIncrement());
-    }
-
     private void mapEventData(Event existingEvent, Event newEvent) {
         existingEvent.setProduct(newEvent.getProduct());
         existingEvent.setTopic(newEvent.getTopic());
-        existingEvent.setSpeaker(newEvent.getSpeaker());
+        existingEvent.setHost(newEvent.getHost());
         existingEvent.setDate(newEvent.getDate());
         existingEvent.setTime(newEvent.getTime());
         existingEvent.setCity(newEvent.getCity());
