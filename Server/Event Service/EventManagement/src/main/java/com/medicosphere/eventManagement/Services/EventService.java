@@ -67,8 +67,6 @@ public class EventService {
         existingEvent.setHost(newEvent.getHost());
         existingEvent.setDate(newEvent.getDate());
         existingEvent.setTime(newEvent.getTime());
-        existingEvent.setCity(newEvent.getCity());
-        existingEvent.setState(newEvent.getState());
-        existingEvent.setCountry(newEvent.getCountry());
+        existingEvent.setVenueId(newEvent.getVenueId());
     }
 }

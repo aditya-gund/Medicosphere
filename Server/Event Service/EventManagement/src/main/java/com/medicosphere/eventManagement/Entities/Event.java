@@ -2,6 +2,7 @@ package com.medicosphere.eventManagement.Entities;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table(name = "events")
@@ -29,30 +30,23 @@ public class Event {
     @Column(nullable = false)
     private String time;
 
-    @Column(nullable = false)
-    private String city;
-
-    @Column(nullable = false)
-    private String state;
-
-    @Column(nullable = false)
-    private String country;
+    @Column(nullable =  false)
+    private Long venueId;
 
     // Constructors
     public Event() {
         // Default constructor
     }
 
-    public Event(String eventId, String product, String topic, String host, LocalDate date, String time, String city, String state, String country) {
+    public Event(Long id, String eventId, String product, String topic, String host, LocalDate date, String time, Long venueId) {
+        this.id = id;
         this.eventId = eventId;
         this.product = product;
         this.topic = topic;
         this.host = host;
         this.date = date;
         this.time = time;
-        this.city = city;
-        this.state = state;
-        this.country = country;
+        this.venueId = venueId;
     }
 
     // Getters and setters
@@ -112,59 +106,82 @@ public class Event {
         this.time = time;
     }
 
-    public String getCity() {
-        return city;
+    public Long getVenueId() {
+        return this.venueId;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setVenueId(Long venueId) {
+        this.venueId = venueId;
     }
 
-    public String getState() {
-        return state;
+    public Event id(Long id) {
+        setId(id);
+        return this;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public Event eventId(String eventId) {
+        setEventId(eventId);
+        return this;
     }
 
-    public String getCountry() {
-        return country;
+    public Event product(String product) {
+        setProduct(product);
+        return this;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public Event topic(String topic) {
+        setTopic(topic);
+        return this;
     }
 
-    // toString, equals, and hashCode methods
-    @Override
-    public String toString() {
-        return "Event{" +
-                "id=" + id +
-                ", eventId='" + eventId + '\'' +
-                ", product='" + product + '\'' +
-                ", topic='" + topic + '\'' +
-                ", host='" + host + '\'' +
-                ", date=" + date +
-                ", time='" + time + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", country='" + country + '\'' +
-                '}';
+    public Event host(String host) {
+        setHost(host);
+        return this;
+    }
+
+    public Event date(LocalDate date) {
+        setDate(date);
+        return this;
+    }
+
+    public Event time(String time) {
+        setTime(time);
+        return this;
+    }
+
+    public Event venueId(Long venueId) {
+        setVenueId(venueId);
+        return this;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (o == this)
+            return true;
+        if (!(o instanceof Event)) {
+            return false;
+        }
         Event event = (Event) o;
-
-        return eventId != null ? eventId.equals(event.eventId) : event.eventId == null;
+        return Objects.equals(id, event.id) && Objects.equals(eventId, event.eventId) && Objects.equals(product, event.product) && Objects.equals(topic, event.topic) && Objects.equals(host, event.host) && Objects.equals(date, event.date) && Objects.equals(time, event.time) && Objects.equals(venueId, event.venueId);
     }
 
     @Override
     public int hashCode() {
-        return eventId != null ? eventId.hashCode() : 0;
+        return Objects.hash(id, eventId, product, topic, host, date, time, venueId);
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", eventId='" + getEventId() + "'" +
+            ", product='" + getProduct() + "'" +
+            ", topic='" + getTopic() + "'" +
+            ", host='" + getHost() + "'" +
+            ", date='" + getDate() + "'" +
+            ", time='" + getTime() + "'" +
+            ", venueId='" + getVenueId() + "'" +
+            "}";
+    }
+    
 }
