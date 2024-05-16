@@ -69,4 +69,8 @@ public class EventService {
         existingEvent.setTime(newEvent.getTime());
         existingEvent.setVenueId(newEvent.getVenueId());
     }
+
+    public List<Event> getEventsAtVenue(Long venueId) {
+        return eventRepository.findByVenueId(venueId);
+    }
 }

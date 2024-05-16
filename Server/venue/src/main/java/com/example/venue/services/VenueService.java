@@ -38,7 +38,7 @@ public class VenueService {
             repo.deleteById(id);
     }
 
-    private Venue getExisting(Long id) throws Exception
+    public Venue getExisting(Long id) throws Exception
     {
         Venue venue = repo.findById(id).orElse(null);
         if(venue == null)

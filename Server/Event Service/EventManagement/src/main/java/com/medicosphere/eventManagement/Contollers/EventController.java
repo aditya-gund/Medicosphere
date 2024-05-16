@@ -2,14 +2,18 @@ package com.medicosphere.eventManagement.Contollers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
 
 import com.medicosphere.eventManagement.Entities.Event;
 import com.medicosphere.eventManagement.Services.EventService;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@RestController
+
+@Controller
 @RequestMapping("/events")
 public class EventController {
 
@@ -17,6 +21,11 @@ public class EventController {
 
     public EventController(EventService eventService) {
         this.eventService = eventService;
+    }
+
+    @GetMapping("/venue/{venueID}")
+    public @ResponseBody List<Event> getEventsAtVenue(@PathVariable Long venueID) {
+        return eventService.getEventsAtVenue(venueID);
     }
 
     @GetMapping
@@ -48,6 +57,7 @@ public class EventController {
         boolean deleted = eventService.deleteEvent(eventId);
         return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
+    
 
 }
 

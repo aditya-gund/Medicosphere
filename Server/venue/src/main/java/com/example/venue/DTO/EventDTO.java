@@ -1,43 +1,24 @@
-package com.medicosphere.eventManagement.Entities;
+package com.example.venue.DTO;
 
-import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
-@Entity
-@Table(name = "events")
-public class Event {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class EventDTO {
     private Long id;
-
-    @Column(unique = true, nullable = false)
     private String eventId;
-
-    @Column(nullable = false)
     private String product;
-
-    @Column(nullable = false)
     private String topic;
-
-    @Column(nullable = false)
     private String host;
-
-    @Column(nullable = false)
     private LocalDate date;
-
-    @Column(nullable = false)
     private String time;
-
-    @Column(nullable = false)
     private Long venueId;
 
-    public Event() {
+
+    public EventDTO() {
     }
 
-    public Event(Long id, String eventId, String product, String topic, String host, LocalDate date, String time,
-            Long venueId) {
+    public EventDTO(Long id, String eventId, String product, String topic, String host, LocalDate date, String time, Long venueId) {
         this.id = id;
         this.eventId = eventId;
         this.product = product;
@@ -112,42 +93,42 @@ public class Event {
         this.venueId = venueId;
     }
 
-    public Event id(Long id) {
+    public EventDTO id(Long id) {
         setId(id);
         return this;
     }
 
-    public Event eventId(String eventId) {
+    public EventDTO eventId(String eventId) {
         setEventId(eventId);
         return this;
     }
 
-    public Event product(String product) {
+    public EventDTO product(String product) {
         setProduct(product);
         return this;
     }
 
-    public Event topic(String topic) {
+    public EventDTO topic(String topic) {
         setTopic(topic);
         return this;
     }
 
-    public Event host(String host) {
+    public EventDTO host(String host) {
         setHost(host);
         return this;
     }
 
-    public Event date(LocalDate date) {
+    public EventDTO date(LocalDate date) {
         setDate(date);
         return this;
     }
 
-    public Event time(String time) {
+    public EventDTO time(String time) {
         setTime(time);
         return this;
     }
 
-    public Event venueId(Long venueId) {
+    public EventDTO venueId(Long venueId) {
         setVenueId(venueId);
         return this;
     }
@@ -156,14 +137,11 @@ public class Event {
     public boolean equals(Object o) {
         if (o == this)
             return true;
-        if (!(o instanceof Event)) {
+        if (!(o instanceof EventDTO)) {
             return false;
         }
-        Event event = (Event) o;
-        return Objects.equals(id, event.id) && Objects.equals(eventId, event.eventId)
-                && Objects.equals(product, event.product) && Objects.equals(topic, event.topic)
-                && Objects.equals(host, event.host) && Objects.equals(date, event.date)
-                && Objects.equals(time, event.time) && Objects.equals(venueId, event.venueId);
+        EventDTO eventDTO = (EventDTO) o;
+        return Objects.equals(id, eventDTO.id) && Objects.equals(eventId, eventDTO.eventId) && Objects.equals(product, eventDTO.product) && Objects.equals(topic, eventDTO.topic) && Objects.equals(host, eventDTO.host) && Objects.equals(date, eventDTO.date) && Objects.equals(time, eventDTO.time) && Objects.equals(venueId, eventDTO.venueId);
     }
 
     @Override
@@ -174,15 +152,16 @@ public class Event {
     @Override
     public String toString() {
         return "{" +
-                " id='" + getId() + "'" +
-                ", eventId='" + getEventId() + "'" +
-                ", product='" + getProduct() + "'" +
-                ", topic='" + getTopic() + "'" +
-                ", host='" + getHost() + "'" +
-                ", date='" + getDate() + "'" +
-                ", time='" + getTime() + "'" +
-                ", venueId='" + getVenueId() + "'" +
-                "}";
+            " id='" + getId() + "'" +
+            ", eventId='" + getEventId() + "'" +
+            ", product='" + getProduct() + "'" +
+            ", topic='" + getTopic() + "'" +
+            ", host='" + getHost() + "'" +
+            ", date='" + getDate() + "'" +
+            ", time='" + getTime() + "'" +
+            ", venueId='" + getVenueId() + "'" +
+            "}";
     }
+    
 
 }
