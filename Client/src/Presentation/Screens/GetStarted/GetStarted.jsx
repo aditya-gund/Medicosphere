@@ -5,7 +5,7 @@ import GetStartedViewHandler from "./GetStartedViewHandler";
 function Statement(text) {
   return (
     <>
-      <img src="./hollowCircle.svg" style={{ height: "100%" }} alt="bullet" />
+      <img src="/hollowCircle.svg" style={{ height: "100%" }} alt="bullet" />
       <div>{text}</div>
     </>
   );
@@ -16,7 +16,7 @@ function Intro() {
     <>
       <div className="Motto">
         <img
-          src="./hospitalCalendarLogo.svg"
+          src="/hospitalCalendarLogo.svg"
           style={{ height: "120px" }}
           alt="appLogo"
         />

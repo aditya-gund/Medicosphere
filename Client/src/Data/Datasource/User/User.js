@@ -12,4 +12,9 @@ async function signup(firstname, lastname, email, password, role) {
   return axios.post(call, { firstname, lastname, email, password, role });
 }
 
-export { login, signup };
+async function getNameByEmail(email) {
+  const call = link + "/" + email;
+  return axios.get(call);
+}
+
+export { login, signup, getNameByEmail };

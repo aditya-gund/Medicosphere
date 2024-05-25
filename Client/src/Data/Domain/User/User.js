@@ -1,6 +1,6 @@
 //import { signup } from "../../Datasource/User/User_mock";
 //import { login } from "../../Datasource/User/User_mock";
-import { login } from "../../Datasource/User/User";
+import { getNameByEmail, login } from "../../Datasource/User/User";
 import { signup } from "../../Datasource/User/User";
 
 async function Login(email, password) {
@@ -21,4 +21,13 @@ async function Signup(firstName, lastName, email, password, role) {
   }
 }
 
-export { Login, Signup };
+async function GetNameByEmail(email) {
+  try {
+    const { data } = await getNameByEmail(email);
+    return { data, error: null };
+  } catch (error) {
+    return { data: null, error: error };
+  }
+}
+
+export { Login, Signup, GetNameByEmail };

@@ -4,6 +4,7 @@ import TopBar from "../../Components/Topbar/TopBar";
 import "./Home.css";
 import DashBoard from "../Dashboard/Dashboard";
 import { RedirectNotFound } from "../NotFound/NotFound";
+import Events from "../Events/Events";
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
         <div className="Content">
           <Routes>
             <Route path="/" element={<DashBoard />} />
+            <Route path="/events" element={<Events />} />
             <Route path="/*" element={<RedirectNotFound />} />
           </Routes>
         </div>

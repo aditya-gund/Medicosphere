@@ -9,11 +9,9 @@ import org.mockito.MockitoAnnotations;
 import com.medicosphere.eventManagement.Entities.Event;
 import com.medicosphere.eventManagement.repository.EventRepository;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 public class EventServiceTest {

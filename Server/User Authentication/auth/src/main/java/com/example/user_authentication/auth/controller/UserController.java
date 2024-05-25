@@ -6,12 +6,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.user_authentication.auth.DTO.CustomUserDetails;
 import com.example.user_authentication.auth.DTO.ResponseUserDTO;
 import com.example.user_authentication.auth.DTO.UserLoginDTO;
 import com.example.user_authentication.auth.DTO.UserSignupDTO;
@@ -24,6 +27,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 @CrossOrigin
@@ -40,6 +44,14 @@ public class UserController {
     public @ResponseBody String getMethodName() throws Exception {
         return "Returning secured resource";
     }
+
+    @GetMapping("/{email}")
+    @Secured({"ADMIN", "MANAGER", "AUDIENCE"})
+    public String getUserByEmail(@PathVariable String email) throws UsernameNotFoundException {
+        CustomUserDetails user = (CustomUserDetails) userService.loadUserByUsername(email);
+        return user.getUser().getFirstname() + " " + user.getUser().getFirstname();
+    }
+    
 
     @PostMapping("/login")
     public ResponseEntity<ResponseUserDTO> login(@RequestBody UserLoginDTO user, HttpServletResponse res)
@@ -59,7 +71,7 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<ResponseUserDTO> postMethodName(@RequestBody UserSignupDTO user, HttpServletResponse res)
+    public ResponseEntity<ResponseUserDTO> createUser(@RequestBody UserSignupDTO user, HttpServletResponse res)
             throws Exception {
         User saved = userService.store(
                 user.getFirstname(),

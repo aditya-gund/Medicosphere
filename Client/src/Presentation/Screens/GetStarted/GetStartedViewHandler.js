@@ -1,17 +1,20 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Login, Signup } from "../../../Data/Domain/User/User";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../../Context/UserContext";
+// import { useUser } from "../../Context/UserContext";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../Redux/User/UserSlice";
 
 function GetStartedViewHandler() {
   const [screenMode, setScreenMode] = useState("login");
   const form = useRef();
   const navigate = useNavigate();
-  const { setUser } = useUser();
+  // const { setUser } = useUser();
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    setUser();
-  }, [setUser]);
+  // useEffect(() => {
+  //   setUser();
+  // }, [setUser]);
 
   function setLoginMode() {
     setScreenMode("login");
@@ -29,7 +32,8 @@ function GetStartedViewHandler() {
     Login(email, password).then(({ data, error }) => {
 
       if (data) {
-        setUser(data.firstname, data.lastname, data.email, data.role);
+        // setUser(data.firstname, data.lastname, data.email, data.role);
+        dispatch(setUser({firstName: data.firstname,lastName: data.lastname,email: data.email,role: data.role}));
         navigate("/home");
       } else {
         if (error && (error.response.status === 401 || error.response.status === 403)) {
@@ -57,20 +61,12 @@ function GetStartedViewHandler() {
     const firstName = values.get("firstName");
     const lastName = values.get("lastName");
     const confirmPassword = values.get("confirmPassword");
-    const role = values.get("role");
-
-    console.log("Trying to signup");
-    console.log(email);
-    console.log(password);
-    console.log(firstName);
-    console.log(lastName);
-    console.log(role);
-    
+    const role = values.get("role");    
 
     if (confirmPassword === password) {
       Signup(firstName, lastName, email, password, role).then(({ data, error }) => {
         if (data) {
-          setUser(data.firstname, data.lastname, data.email, data.role);
+          dispatch(setUser({firstName: data.firstname,lastName: data.lastname,email: data.email,role: data.role}));
           navigate("/home");
         } else {
           if (error && (error.response.status === 401 || error.response.status === 403)) {

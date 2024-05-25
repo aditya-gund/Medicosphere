@@ -63,6 +63,5 @@ public class UserService implements UserDetailsService {
     public void setEncoder(PasswordEncoder encoder) {
         this.encoder = encoder;
     }
-    
 
 }
