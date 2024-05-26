@@ -1,3 +1,4 @@
+import EventCard from "../../Components/EventCard/EventCard";
 import "./Events.css";
 import EventsViewHandler from "./EventsViewHandler";
 
@@ -41,8 +42,11 @@ function AllEvents(checkAndUpdateEvents, eventList) {
   console.log(eventList);
   return (
     <div className="AllEvents">
-      I want to display all the events here for a particular user that is logged
-      in
+      {
+        eventList.map(({eventId, product, topic, venueId, host, date, time}) => (
+          <EventCard eventId={eventId} product={product} topic={topic} venueId={venueId} host={host} date={new Date(date.year, date.month, date.year)} time={time} />
+        ))
+      }
     </div>
   );
 }

@@ -1,18 +1,25 @@
 import "./EventCard.css";
 import EventCardViewHandler from "./EventCardViewHandler";
 
-const EventCard = ({eventId, product, topic, venueId, host, date, time}) => {
+const EventCard = ({eventId, product, topic, venueId, hostEmail, date, time}) => {
 
-    const {venue, hostname} = EventCardViewHandler({venueId, host});
+    const {venue, host} = EventCardViewHandler({venueId,hostEmail});
 
     return (
         <div className="EventCard">
-            eventId: {eventId}
-            product: {product}
-            topic: {topic}
-            host: {hostname}
-            venue: {venue.address + ", " + venue.country + ", " + venue.country}
-            date: {date + " " + time}
+            <div className="host" style={{backgroundColor: `hsla(${~~(360 * Math.random())}, 70%,  72%, 0.8)`}} >
+                <span>{host.firstName +" " + host.lastName} <br/></span>
+                <img src="/user.svg" alt="creater"/>
+            </div>
+            <h4>
+                {product}<br/>
+                {topic}
+            </h4>
+            <div>
+                Location: {venue.address + ", " + venue.state + ", " + venue.country}<br/><br/>
+                Date: {date.getDate() + " " + date.getMonth() + " " + date.getFullYear() + " " + time}<br/>
+            </div>
+            eventId: {eventId}<br></br>
         </div>
     )
 };

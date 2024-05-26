@@ -3,7 +3,7 @@
 import { getNameByEmail, login } from "../../Datasource/User/User";
 import { signup } from "../../Datasource/User/User";
 
-async function Login(email, password) {
+export async function Login(email, password) {
   try {
     const {data} = await login(email, password);
     return { data, error: null };
@@ -12,7 +12,7 @@ async function Login(email, password) {
   }
 }
 
-async function Signup(firstName, lastName, email, password, role) {
+export async function Signup(firstName, lastName, email, password, role) {
   try {
     const { data } = await signup(firstName, lastName, email, password, role);
     return { data, error: null };
@@ -21,13 +21,13 @@ async function Signup(firstName, lastName, email, password, role) {
   }
 }
 
-async function GetNameByEmail(email) {
-  try {
-    const { data } = await getNameByEmail(email);
-    return { data, error: null };
-  } catch (error) {
-    return { data: null, error: error };
-  }
+export async function GetUserByEmail(email) {
+  return {data: {firstName: "Test Name Reset", lastName: ""}};
+  // try {
+    
+  //   const { data } = await getNameByEmail(email);
+  //   return { data, error: null };
+  // } catch (error) {
+  //   return { data: null, error: error };
+  // }
 }
-
-export { Login, Signup, GetNameByEmail };

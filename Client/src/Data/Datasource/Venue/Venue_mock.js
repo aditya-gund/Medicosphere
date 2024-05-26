@@ -18,7 +18,15 @@ const Venues = [
 export function getVenueById(venueId) {
   return new Promise((resolve) => {
     setTimeout(
-      resolve({ data: Venues.filter(({ id }) => id === venueId) }[0]),
+      () => {
+        try {
+          const venue = Venues.filter(({ id }) => id === venueId)[0];
+          resolve({data: venue})
+        } 
+        catch (error) {
+          resolve({error})
+        }
+      },
       1200
     );
   });

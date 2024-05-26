@@ -6,7 +6,7 @@ const Events = [
     topic: "Test Topic 1",
     host: 1,
     date: new Date(),
-    time: new Date().getHours() + ":" + new Date().getMinutes(),
+    time: new Date().getHours() + ":" + new Date().getMinutes() + " AM",
     venueId: 1,
   },
   {
@@ -16,7 +16,7 @@ const Events = [
     topic: "Test Topic 2",
     host: 2,
     date: new Date(),
-    time: new Date().getHours() + ":" + new Date().getMinutes(),
+    time: new Date().getHours() + ":" + new Date().getMinutes() + " PM",
     venueId: 2,
   },
 ];

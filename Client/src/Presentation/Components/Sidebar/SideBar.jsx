@@ -2,7 +2,6 @@ import "./SideBar.css";
 import SideBarViewHandler from "./SideBarViewHandler";
 
 function button(src, label, onClick, active) {
-  console.log(src);
   return (
     <div
       className={`button ${active === label ? "active" : ""}`}

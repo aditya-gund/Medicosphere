@@ -1,3 +1,22 @@
 .EventCard{
-    background-color: blue;
+    text-align: center;
+    background-color: white;
+    padding-bottom: 20px;
+    max-width: 18vw;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.EventCard>div>img{
+    aspect-ratio: 1/1;
+    width: 50px;
+    padding: 2px;
+    background-color: #ffffff;
+    object-fit: contain;
+    border-radius: 50%;
+    transform: translateY(50%);
+}
+
+.EventCard>div,h4{
+    padding: 10px 10px 0 10px;
 }
