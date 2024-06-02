@@ -7,9 +7,9 @@ import {
   getEventsForUser,
 } from "../../Datasource/Event/Event_mock";
 
-export async function CreateEvent(event) {
+export async function CreateEvent(event, venue, attendees) {
   try {
-    const { data } = await createEvent(event);
+    const { data } = await createEvent({...event,...venue,attendees: attendees});
     return { data, error: null };
   } catch (error) {
     return { data: null, error };

@@ -4,10 +4,38 @@ const Events = [
     eventId: "Event1",
     product: "Test Product 1",
     topic: "Test Topic 1",
-    host: 1,
+    host: {
+      firstName: "Abhinov",
+      lastName: "Mishra",
+      email: "test1@gmail.com",
+      role: "ADMIN",
+      profilePic: null,
+    },
     date: new Date(),
     time: new Date().getHours() + ":" + new Date().getMinutes() + " AM",
-    venueId: 1,
+    venue: {
+      id: 1,
+      address: "BR-09, Ardent House",
+      country: "India",
+      city: "Bangalore",
+      state: "Karnataka",
+    },
+    attendees: [
+      {
+        firstName: "Abhinov",
+        lastName: "Mishra",
+        email: "test1@gmail.com",
+        role: "ADMIN",
+        profilePic: null,
+      },
+      {
+        firstName: "Aditya",
+        lastName: "Gund",
+        email: "test2@gmail.com",
+        role: "MANAGER",
+        profilePic: null,
+      },
+    ],
   },
   {
     id: 2,
@@ -23,7 +51,7 @@ const Events = [
 
 export function createEvent(event) {
   return new Promise((resolve) => {
-    setTimeout(resolve({ data: event }), 1200);
+    setTimeout(resolve({ data: Events[0] }), 1200);
   });
 }
 

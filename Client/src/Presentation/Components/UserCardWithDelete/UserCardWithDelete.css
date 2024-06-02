@@ -1,0 +1,72 @@
+.UserCard{
+    background-color: #3a455a;
+    color: white;
+    width: 300px;
+    height: 300px;
+    flex-grow: 0;
+    aspect-ratio: 1/1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.UserCard>img{
+    aspect-ratio: 1/1;
+    width: 120px;
+    margin-top: 30px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.UserCard>h2{
+    font-weight: normal;
+    margin: 5px 0 0 0;
+    max-width: 260px;
+    text-overflow: ellipsis;
+}
+
+.UserCard>.email{
+    font-size: small;
+    max-width: 260px;
+}
+
+.UserCard>.footer{
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    background-color: #e7edf7;
+    width: 100%;
+}
+
+.UserCard>.footer>*{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px 0 5px 0;
+    color: black;
+    border: 1px solid black !important;
+}
+
+.UserCard>.footer>div{
+    border-bottom-left-radius: 10px;
+}
+
+.UserCard>.footer>div>.role{
+    text-transform: lowercase;
+}
+.UserCard>.footer>div>.role::first-letter{
+    text-transform: uppercase;
+}
+
+.UserCard>.footer>button{
+    border-left: none !important;
+    outline: 0;
+    background-color: inherit;
+    font: inherit;
+    cursor: pointer;
+    border-bottom-right-radius: 10px;
+}

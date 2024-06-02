@@ -15,6 +15,13 @@ const Venues = [
   },
 ];
 
+const Availability = [
+  "9:00 AM",
+  "10:00 AM",
+  "1:00 PM",
+  "3:00 PM"
+]
+
 export function getVenueById(venueId) {
   return new Promise((resolve) => {
     setTimeout(
@@ -30,4 +37,29 @@ export function getVenueById(venueId) {
       1200
     );
   });
+}
+
+export function getAllVenues() {
+  return new Promise((resolve) => {
+    setTimeout(
+      () => {
+        try {
+          resolve({data: Venues})
+        } 
+        catch (error) {
+          resolve({error})
+        }
+      },
+      1200
+    );
+  });
+}
+
+export function getAvailability(venueId, date)
+{
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({data: Availability})
+    }, 3000)
+  })
 }

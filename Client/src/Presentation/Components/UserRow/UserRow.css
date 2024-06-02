@@ -1,0 +1,17 @@
+.UserRow{
+    display: flex;
+    flex-direction: row;
+    padding: 5px 10px 5px 10px;
+    width: 100%;
+    gap: 10px;
+}
+
+.UserRow>img{
+    aspect-ratio: 1/1;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.UserRow>div{
+    width: 30%;
+}

@@ -1,54 +1,74 @@
 import { GetVenueById } from "../../../Data/Domain/Venue/Venue";
-import { GetNameByEmail, GetUserByEmail } from "../../../Data/Domain/User/User";
-import { useEffect, useState } from "react";
+import { GetUserByEmail } from "../../../Data/Domain/User/User";
+import { useEffect, useMemo, useState } from "react";
 
-const EventCardViewHandler = ({venueId, hostEmail}) => {
+const bgColorList = [
+  "#FFC312",
+  "#EE5A24",
+  "#C4E538",
+  "#A3CB38",
+  "#12CBC4",
+  "#FDA7DF",
+];
 
-    const [venue, setVenue] = useState("");
-    const [host, setHost] = useState("");
+const EventCardViewHandler = ({ venueId, hostEmail, eventId }) => {
+  const [venue, setVenue] = useState("");
+  const [host, setHost] = useState("");
+  const [bgColor, setBgColor] = useState("red");
+  const [loadingVenue, setLoadingVenue] = useState(false);
+  const [loadingHost, setLoadingHost] = useState(false);
+  const loading = useMemo(
+    () => {
+        return loadingVenue || loadingHost},
+    [loadingVenue, loadingHost]
+  );
 
-    useEffect(() => {
-        
-        async function updateVenueFromId()
-        {
-            const {data, error} = await GetVenueById(venueId);
-            if(!error)
-            {
-                setVenue(data);
-            }
-            else
-            {
-                alert("An error occurred while getching venue details.");
-                console.error(error);
-            }
-        }
-        
-        updateVenueFromId();
+  useEffect(() => {
+    let id = eventId.substring(5);
+    let hash = 0;
+    id.split("").forEach((c) => {
+      hash += c.charCodeAt(0);
+    });
+    hash = hash % bgColorList.length;
+    setBgColor(bgColorList[hash]);
+  }, [eventId]);
 
-    }, [venueId])
-
-    useEffect(() => {
-        async function updateHostFromEmail()
-        {
-            const {data, error} = await GetUserByEmail(hostEmail);
-            if(!error)
-            {
-                setHost(data);
-            }
-            else
-            {
-                alert("An error occurred while trying to fetch host information.");
-                console.log(error);
-            }
-        }
-        
-        updateHostFromEmail();
-    }, [hostEmail])
-
-    return {
-        venue,
-        host
+  useEffect(() => {
+    async function updateVenueFromId() {
+      const { data, error } = await GetVenueById(venueId);
+      if (!error) {
+        setVenue(data);
+      } else {
+        setVenue("Unable to fetch venue at the moment!!!");
+        console.error(error);
+      }
+      setLoadingVenue(false);
     }
-}
+    setLoadingVenue(true);
+    updateVenueFromId();
+  }, [venueId]);
+
+  useEffect(() => {
+    async function updateHostFromEmail() {
+      const { data, error } = await GetUserByEmail(hostEmail);
+      if (!error) {
+        setHost(data);
+      } else {
+        setHost("Could not fetch hostname");
+        console.log(error);
+      }
+      setLoadingHost(false);
+    }
+    setLoadingHost(true);
+    updateHostFromEmail();
+  }, [hostEmail]);
+
+  return {
+    venue,
+    host,
+    bgColor,
+    loading,
+  };
+};
 
 export default EventCardViewHandler;

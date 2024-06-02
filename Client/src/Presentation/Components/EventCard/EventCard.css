@@ -5,18 +5,73 @@
     max-width: 18vw;
     border-radius: 10px;
     overflow: hidden;
+    flex-shrink: 0;
+}
+
+.Placeholder{
+    text-align: center;
+    background-color: white;
+    padding-bottom: 20px;
+    width: 18vw;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
 }
 
 .EventCard>div>img{
+    position: absolute;
+    bottom: 0;
     aspect-ratio: 1/1;
     width: 50px;
-    padding: 2px;
+    border: 2px solid white;
     background-color: #ffffff;
     object-fit: contain;
     border-radius: 50%;
     transform: translateY(50%);
 }
 
+.EventCard>.host{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+}
+
+.EventCard>.host>span{
+    font-family: "Great Vibes", cursive;
+    font-size: x-large;
+}
+
 .EventCard>div,h4{
     padding: 10px 10px 0 10px;
+}
+
+.Placeholder span{
+    display: inline-block;
+    width: 100px;
+    height: 10px;
+    background-color: #e2e9ef;
+}
+
+.img-placeholder{
+    position: absolute;
+    bottom: 0;
+    aspect-ratio: 1/1;
+    width: 50px;
+    object-fit: contain;
+    border-radius: 50%;
+    transform: translateY(50%);
+    background-color: #e2e9ef;
+    border: 2px solid #e2e9ef;
+}
+
+.Placeholder .x-size{
+    width: 120px !important;
+    height: 20px !important;
+    margin-top: 2px;
+}
+
+.Placeholder .h-fill{
+    width: 90% !important;
 }

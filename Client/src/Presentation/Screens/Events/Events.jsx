@@ -1,9 +1,19 @@
 import EventCard from "../../Components/EventCard/EventCard";
 import "./Events.css";
-import EventsViewHandler from "./EventsViewHandler";
+import EventsViewHandler, {
+  CreateEventFormViewHandler,
+} from "./EventsViewHandler";
+import { CreateEventUI } from "./CreateEventChain/CreateEventUI";
+import { AddVenue } from "./CreateEventChain/AddVenue";
+import { EventCreated } from "./CreateEventChain/EventCreated/EventCreated";
+import { AddAttendees } from "./CreateEventChain/AddAttendees/AddAttendees";
+import { Loading } from "./CreateEventChain/Loading";
+import { RedirectNotFound } from "../NotFound/NotFound";
+import { useEffect } from "react";
 
 const Events = () => {
-  const { mode, setMode, checkAndUpdateEvents, storedEvents } = EventsViewHandler();
+  const { mode, setMode, checkAndUpdateEvents, storedEvents, email, venues } =
+    EventsViewHandler();
 
   return (
     <div className="Events">
@@ -12,7 +22,15 @@ const Events = () => {
         {options
           .filter((option) => option.mode === mode)
           .map(({ element }) => {
-            if (element === AllEvents) return AllEvents(checkAndUpdateEvents, storedEvents);
+            if (element === AllEvents)
+              return (
+                <AllEvents
+                  checkAndUpdateEvents={checkAndUpdateEvents}
+                  eventList={storedEvents}
+                />
+              );
+            if (element === CreateEventForm)
+              return <CreateEventForm email={email} venues={venues} />;
             else return element();
           })}
       </div>
@@ -37,22 +55,78 @@ const options = [
   { mode: "Delete", menu: "Delete Event", element: DeleteEventForm },
 ];
 
-function AllEvents(checkAndUpdateEvents, eventList) {
-  checkAndUpdateEvents();
-  console.log(eventList);
+function AllEvents({ checkAndUpdateEvents, eventList }) {
+  useEffect(() => {
+    checkAndUpdateEvents();
+  }, [checkAndUpdateEvents]);
   return (
     <div className="AllEvents">
-      {
-        eventList.map(({eventId, product, topic, venueId, host, date, time}) => (
-          <EventCard eventId={eventId} product={product} topic={topic} venueId={venueId} host={host} date={new Date(date.year, date.month, date.year)} time={time} />
-        ))
-      }
+      {eventList.map(
+        ({ eventId, product, topic, venueId, host, date, time }) => (
+          <EventCard
+            eventId={eventId}
+            product={product}
+            topic={topic}
+            venueId={venueId}
+            host={host}
+            date={new Date(date.year, date.month, date.year)}
+            time={time}
+          />
+        )
+      )}
     </div>
   );
 }
 
-function CreateEventForm() {
-  return <form>Create EventForm</form>;
+function CreateEventForm({ email, venues }) {
+  const {
+    stage,
+    setStage,
+    onEventFormSubmit,
+    onVenueFormSubmit,
+    onAttendeesListSubmit,
+    attendees,
+    attendeesSet,
+    addAttendee,
+    removeAttendee,
+    createdEvent
+  } = CreateEventFormViewHandler();
+
+  switch (stage) {
+    case "event":
+      return (
+        <CreateEventUI
+          onSubmit={onEventFormSubmit}
+          email={email}
+          venues={venues}
+        />
+      );
+    case "venue":
+      return (
+        <AddVenue
+          venues={venues}
+          onSubmit={onVenueFormSubmit}
+          onBackPress={() => setStage("event")}
+        />
+      );
+    case "attendees":
+      return (
+        <AddAttendees
+          onSubmit={onAttendeesListSubmit}
+          onBackPress={() => setStage("venue")}
+          users={attendees}
+          userSet={attendeesSet}
+          addUser={addAttendee}
+          removeUser={removeAttendee}
+        />
+      );
+    case "loading":
+      return <Loading />;
+    case "created":
+      return <EventCreated event={createdEvent} />;
+    default:
+      return <RedirectNotFound />;
+  }
 }
 
 function UpdateEventForm() {

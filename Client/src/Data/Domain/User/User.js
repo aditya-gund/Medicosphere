@@ -1,7 +1,8 @@
 //import { signup } from "../../Datasource/User/User_mock";
 //import { login } from "../../Datasource/User/User_mock";
-import { getNameByEmail, login } from "../../Datasource/User/User";
-import { signup } from "../../Datasource/User/User";
+import {  login } from "../../Datasource/User/User_mock";
+import { signup } from "../../Datasource/User/User_mock";
+import { searchUserByEmail } from "../../Datasource/User/User_mock";
 
 export async function Login(email, password) {
   try {
@@ -30,4 +31,16 @@ export async function GetUserByEmail(email) {
   // } catch (error) {
   //   return { data: null, error: error };
   // }
+}
+
+export async function SearchUserByEmail(match)
+{
+  try{
+    const {data} = await searchUserByEmail(match);
+    return {data, error: null};
+  }
+  catch(error)
+  {
+    return {data: null, error};
+  }
 }
