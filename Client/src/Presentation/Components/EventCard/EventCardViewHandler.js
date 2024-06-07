@@ -1,6 +1,8 @@
-import { GetVenueById } from "../../../Data/Domain/Venue/Venue";
 import { GetUserByEmail } from "../../../Data/Domain/User/User";
 import { useEffect, useMemo, useState } from "react";
+import { useDispatch } from "react-redux";
+import { showPopup } from "../../Redux/Modal/ModalSlice";
+import { CancelEvent } from "../../../Data/Domain/Event/Event";
 
 const bgColorList = [
   "#FFC312",
@@ -11,17 +13,35 @@ const bgColorList = [
   "#FDA7DF",
 ];
 
-const EventCardViewHandler = ({ venueId, hostEmail, eventId }) => {
-  const [venue, setVenue] = useState("");
+const EventCardViewHandler = ({ hostEmail, eventId, checkAndUpdateEvents }) => {
   const [host, setHost] = useState("");
   const [bgColor, setBgColor] = useState("red");
   const [loadingVenue, setLoadingVenue] = useState(false);
   const [loadingHost, setLoadingHost] = useState(false);
-  const loading = useMemo(
-    () => {
-        return loadingVenue || loadingHost},
-    [loadingVenue, loadingHost]
-  );
+
+  const dispatch = useDispatch();
+
+  function cancelEvent()
+  {
+    CancelEvent(eventId)
+    .then((data) => {
+      alert(eventId + " deleted successfully.")
+      console.log(data);
+      checkAndUpdateEvents();
+    })
+    .catch((error) => {
+      alert("Unexpected error encountered while trying to cancel " + eventId);
+      console.error(error);
+    })
+  }
+
+  function ShowCancelMenu() {
+    dispatch(showPopup({ popup: true, modal: "CancelEventModal", modalProps: {onConfirm: cancelEvent, eventId: eventId} }));
+  }
+
+  const loading = useMemo(() => {
+    return loadingVenue || loadingHost;
+  }, [loadingVenue, loadingHost]);
 
   useEffect(() => {
     let id = eventId.substring(5);
@@ -32,21 +52,6 @@ const EventCardViewHandler = ({ venueId, hostEmail, eventId }) => {
     hash = hash % bgColorList.length;
     setBgColor(bgColorList[hash]);
   }, [eventId]);
-
-  useEffect(() => {
-    async function updateVenueFromId() {
-      const { data, error } = await GetVenueById(venueId);
-      if (!error) {
-        setVenue(data);
-      } else {
-        setVenue("Unable to fetch venue at the moment!!!");
-        console.error(error);
-      }
-      setLoadingVenue(false);
-    }
-    setLoadingVenue(true);
-    updateVenueFromId();
-  }, [venueId]);
 
   useEffect(() => {
     async function updateHostFromEmail() {
@@ -64,10 +69,10 @@ const EventCardViewHandler = ({ venueId, hostEmail, eventId }) => {
   }, [hostEmail]);
 
   return {
-    venue,
     host,
     bgColor,
     loading,
+    ShowCancelMenu,
   };
 };
 

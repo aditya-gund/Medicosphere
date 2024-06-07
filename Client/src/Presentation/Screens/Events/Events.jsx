@@ -1,8 +1,7 @@
 import EventCard from "../../Components/EventCard/EventCard";
 import "./Events.css";
-import EventsViewHandler, {
-  CreateEventFormViewHandler,
-} from "./EventsViewHandler";
+import EventsViewHandler from "./EventsViewHandler";
+import { CreateEventFormViewHandler } from "./CreateEventFormViewHandler";
 import { CreateEventUI } from "./CreateEventChain/CreateEventUI";
 import { AddVenue } from "./CreateEventChain/AddVenue";
 import { EventCreated } from "./CreateEventChain/EventCreated/EventCreated";
@@ -52,7 +51,6 @@ const options = [
   { mode: "View", menu: "All Events", element: AllEvents },
   { mode: "Create", menu: "Create Event", element: CreateEventForm },
   { mode: "Update", menu: "Update Existing Event", element: UpdateEventForm },
-  { mode: "Delete", menu: "Delete Event", element: DeleteEventForm },
 ];
 
 function AllEvents({ checkAndUpdateEvents, eventList }) {
@@ -62,15 +60,16 @@ function AllEvents({ checkAndUpdateEvents, eventList }) {
   return (
     <div className="AllEvents">
       {eventList.map(
-        ({ eventId, product, topic, venueId, host, date, time }) => (
+        ({ eventId, product, topic, venue, host, date, time }) => (
           <EventCard
             eventId={eventId}
             product={product}
             topic={topic}
-            venueId={venueId}
+            venue={venue}
             host={host}
             date={new Date(date.year, date.month, date.year)}
             time={time}
+            checkAndUpdateEvents={checkAndUpdateEvents}
           />
         )
       )}
@@ -131,10 +130,6 @@ function CreateEventForm({ email, venues }) {
 
 function UpdateEventForm() {
   return <form>Update EventForm</form>;
-}
-
-function DeleteEventForm() {
-  return <form>Delete EventForm</form>;
 }
 
 export default Events;

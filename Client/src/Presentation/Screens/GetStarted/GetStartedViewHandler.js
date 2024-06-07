@@ -33,7 +33,7 @@ function GetStartedViewHandler() {
 
       if (data) {
         // setUser(data.firstname, data.lastname, data.email, data.role);
-        dispatch(setUser({firstName: data.firstname,lastName: data.lastname,email: data.email,role: data.role}));
+        dispatch(setUser({firstName: data.firstName,lastName: data.lastName,email: data.email, role: data.role}));
         navigate("/home");
       } else {
         if (error && (error.response.status === 401 || error.response.status === 403)) {

@@ -1,4 +1,3 @@
-import { UserRow } from "../../../../Components/UserRow/UserRow";
 import "./EventCreated.css";
 
 /**
@@ -84,7 +83,7 @@ function AttendeesCard({ attendeesList }) {
       <div>Person</div><div>Email</div><div>Role</div>
       {attendeesList.map(({ firstName, lastName, email, role, profilePic }) => (
         <>
-          <div><img src={profilePic?profilePic:"/user.svg"}/>{firstName + " " + lastName}</div>
+          <div><img src={profilePic?profilePic:"/user.svg"} alt="profile" />{firstName + " " + lastName}</div>
           <div>{email}</div>
           <div>{role}</div>
         </>

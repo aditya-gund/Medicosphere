@@ -1,6 +1,6 @@
 import {
   createEvent,
-  deleteEvent,
+  cancelEvent,
   updateEvent,
   getEventsAtVenue,
   getEventById,
@@ -9,18 +9,22 @@ import {
 
 export async function CreateEvent(event, venue, attendees) {
   try {
-    const { data } = await createEvent({...event,...venue,attendees: attendees});
+    const { data } = await createEvent({
+      ...event,
+      ...venue,
+      attendees: attendees,
+    });
     return { data, error: null };
   } catch (error) {
     return { data: null, error };
   }
 }
 
-export async function DeleteEvent(eventId) {
+export async function CancelEvent(eventId) {
   try {
-    const { status } = await deleteEvent(eventId);
-    if (status === 204)
-      return { data: "Event deleted successfully", error: null };
+    const { status } = await cancelEvent(eventId);
+    if (status === 200)
+      return { data: eventId + " cancelled successfully", error: null };
   } catch (error) {
     return { data: null, error };
   }

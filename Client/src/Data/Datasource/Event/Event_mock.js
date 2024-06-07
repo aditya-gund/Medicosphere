@@ -45,7 +45,29 @@ const Events = [
     host: 2,
     date: new Date(),
     time: new Date().getHours() + ":" + new Date().getMinutes() + " PM",
-    venueId: 2,
+    venue: {
+      id: 1,
+      address: "BR-09, Ardent House",
+      country: "India",
+      city: "Bangalore",
+      state: "Karnataka",
+    },
+    attendees: [
+      {
+        firstName: "Abhinov",
+        lastName: "Mishra",
+        email: "test1@gmail.com",
+        role: "ADMIN",
+        profilePic: null,
+      },
+      {
+        firstName: "Aditya",
+        lastName: "Gund",
+        email: "test2@gmail.com",
+        role: "MANAGER",
+        profilePic: null,
+      },
+    ],
   },
 ];
 
@@ -55,9 +77,9 @@ export function createEvent(event) {
   });
 }
 
-export function deleteEvent(eventId) {
+export function cancelEvent(eventId) {
   return new Promise((resolve) => {
-    setTimeout(resolve({ status: 204 }), 1200);
+    setTimeout(resolve({ status: 200 }), 1200);
   });
 }
 

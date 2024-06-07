@@ -1,9 +1,9 @@
 import "./EventCard.css";
 import EventCardViewHandler from "./EventCardViewHandler";
 
-const EventCard = ({eventId, product, topic, venueId, hostEmail, date, time}) => {
+const EventCard = ({eventId, product, topic, venue, hostEmail, date, time, checkAndUpdateEvents}) => {
 
-    const {venue, host, bgColor, loading} = EventCardViewHandler({venueId,hostEmail, eventId});
+    const {host, bgColor, loading, ShowCancelMenu} = EventCardViewHandler({hostEmail, eventId, checkAndUpdateEvents});
     if(loading)
         return (
             <div className="EventCard Placeholder">
@@ -32,9 +32,12 @@ const EventCard = ({eventId, product, topic, venueId, hostEmail, date, time}) =>
                     {product}<br/>
                     {topic}
                 </h4>
-                Location: {venue.address + ", " + venue.state + ", " + venue.country}<br/><br/>
+                Location: {venue? venue.address + ", " + venue.state + ", " + venue.country : ""}<br/><br/>
                 Date: {(date.getDate() + " " + date.getMonth() + " " + date.getFullYear()).replaceAll(" ", "/") + " " + time}<br/>
                 eventId: {eventId}<br></br>
+                <button onClick={() => ShowCancelMenu()}>
+                    Cancel Event
+                </button>
             </div>
         )
 };

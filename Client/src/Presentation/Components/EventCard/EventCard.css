@@ -1,11 +1,11 @@
 .EventCard{
     text-align: center;
     background-color: white;
-    padding-bottom: 20px;
     max-width: 18vw;
     border-radius: 10px;
     overflow: hidden;
     flex-shrink: 0;
+    padding-bottom: 10px;
 }
 
 .Placeholder{
@@ -74,4 +74,15 @@
 
 .Placeholder .h-fill{
     width: 90% !important;
+}
+
+.EventCard>button{
+    margin-top: 10px;
+    width: 80%;
+    height: 40px;
+    outline: none;
+    background-color: red;
+    color: white;
+    font-size: large;
+    border-radius: 10px;
 }

@@ -23,7 +23,7 @@ function login(email, password) {
       let data = false;
       for (let i = 0; i < users.length; i++) {
         if (users[i].email === email && users[i].password === password) {
-          data = true;
+          data = users[i];
           break;
         }
       }

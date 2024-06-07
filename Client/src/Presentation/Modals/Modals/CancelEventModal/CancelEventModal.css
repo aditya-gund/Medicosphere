@@ -1,0 +1,56 @@
+.cancel-event-modal{
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #282828;
+    display: flex;
+    flex-direction: column;
+}
+
+.cancel-event-modal>h2{
+    width: 100%;
+    padding-top: 10px;
+    margin-top: 0;
+    border-bottom: 1px solid grey;
+    text-wrap: wrap;
+}
+
+.cancel-event-modal>form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.cancel-event-modal>form>input{
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 5px 0px 5px 0px;
+}
+
+.cancel-event-modal>form>input[type="text"]
+{
+    width: calc(100% - 10px);
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.cancel-event-modal>form>input[type="submit"]
+{
+    cursor: pointer;
+    background-color: #a32425;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+}
+
+.cancel-event-modal>span{
+    color: red;
+    width: 100%;
+    align-self: center;
+    text-align: center;
+}
