@@ -1,7 +1,7 @@
-import { useState } from "react";
 import "./CancelEventModal.css";
 import { useDispatch } from "react-redux";
 import { hidePopup } from "../../../Redux/Modal/ModalSlice";
+import { useState } from "react";
 
 function CancelEventModal({onConfirm, eventId}) {
 
@@ -12,9 +12,11 @@ function CancelEventModal({onConfirm, eventId}) {
   {
     e.preventDefault();
     const input = e.target[0].value;
-    if(input === "Cancel "+eventId)
+    if(input === "")
+        setError(null);
+    else if(input === "Cancel "+eventId)
     {
-     onConfirm();
+      onConfirm();
       dispatch(hidePopup())
     }
     else

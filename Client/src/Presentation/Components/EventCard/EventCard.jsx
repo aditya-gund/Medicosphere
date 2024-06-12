@@ -1,7 +1,7 @@
 import "./EventCard.css";
 import EventCardViewHandler from "./EventCardViewHandler";
 
-const EventCard = ({eventId, product, topic, venue, hostEmail, date, time, checkAndUpdateEvents}) => {
+const EventCard = ({eventId, product, topic, venue, hostEmail, date, time, checkAndUpdateEvents, updateClickHandler}) => {
 
     const {host, bgColor, loading, ShowCancelMenu} = EventCardViewHandler({hostEmail, eventId, checkAndUpdateEvents});
     if(loading)
@@ -35,9 +35,14 @@ const EventCard = ({eventId, product, topic, venue, hostEmail, date, time, check
                 Location: {venue? venue.address + ", " + venue.state + ", " + venue.country : ""}<br/><br/>
                 Date: {(date.getDate() + " " + date.getMonth() + " " + date.getFullYear()).replaceAll(" ", "/") + " " + time}<br/>
                 eventId: {eventId}<br></br>
-                <button onClick={() => ShowCancelMenu()}>
-                    Cancel Event
-                </button>
+                <div className="buttons">
+                    <button onClick={() => ShowCancelMenu()} style={{color: "red"}} >
+                        Cancel Event
+                    </button>
+                    <button onClick={() => updateClickHandler()}>
+                        Update Event
+                    </button>
+                </div>
             </div>
         )
 };

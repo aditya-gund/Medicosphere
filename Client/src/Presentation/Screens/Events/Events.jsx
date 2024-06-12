@@ -1,16 +1,17 @@
-import EventCard from "../../Components/EventCard/EventCard";
 import "./Events.css";
 import EventsViewHandler from "./EventsViewHandler";
 import { CreateEventFormViewHandler } from "./CreateEventFormViewHandler";
-import { CreateEventUI } from "./CreateEventChain/CreateEventUI";
-import { AddVenue } from "./CreateEventChain/AddVenue";
-import { EventCreated } from "./CreateEventChain/EventCreated/EventCreated";
-import { AddAttendees } from "./CreateEventChain/AddAttendees/AddAttendees";
-import { Loading } from "./CreateEventChain/Loading";
+import { CreateEventUI } from "./EventChain/CreateEventUI";
+import { AddVenue } from "./EventChain/AddVenue";
+import { EventCreated } from "./EventChain/EventCreated/EventCreated";
+import { AddAttendees } from "./EventChain/AddAttendees/AddAttendees";
+import { Loading } from "./EventChain/Loading";
 import { RedirectNotFound } from "../NotFound/NotFound";
 import { useEffect } from "react";
+import UpdateEventViewHandler from "./UpdateEventViewHandler";
+import SelectEvent from "./EventChain/SelectEvent";
 
-const Events = () => {
+const Events = ({ searchParam }) => {
   const { mode, setMode, checkAndUpdateEvents, storedEvents, email, venues } =
     EventsViewHandler();
 
@@ -26,11 +27,14 @@ const Events = () => {
                 <AllEvents
                   checkAndUpdateEvents={checkAndUpdateEvents}
                   eventList={storedEvents}
+                  searchParam={searchParam}
+                  email={email}
+                  venues={venues}
                 />
               );
-            if (element === CreateEventForm)
-              return <CreateEventForm email={email} venues={venues} />;
-            else return element();
+            if (element === CreateEvent)
+              return <CreateEvent email={email} venues={venues} />;
+            else return <RedirectNotFound />;
           })}
       </div>
     </div>
@@ -48,36 +52,21 @@ function EventOptions(setMode) {
 }
 
 const options = [
-  { mode: "View", menu: "All Events", element: AllEvents },
-  { mode: "Create", menu: "Create Event", element: CreateEventForm },
-  { mode: "Update", menu: "Update Existing Event", element: UpdateEventForm },
+  { mode: "View", menu: "View Events", element: AllEvents },
+  { mode: "Create", menu: "Create Event", element: CreateEvent },
 ];
 
-function AllEvents({ checkAndUpdateEvents, eventList }) {
+function AllEvents({
+  checkAndUpdateEvents,
+  eventList,
+  searchParam,
+  email,
+  venues,
+}) {
   useEffect(() => {
     checkAndUpdateEvents();
   }, [checkAndUpdateEvents]);
-  return (
-    <div className="AllEvents">
-      {eventList.map(
-        ({ eventId, product, topic, venue, host, date, time }) => (
-          <EventCard
-            eventId={eventId}
-            product={product}
-            topic={topic}
-            venue={venue}
-            host={host}
-            date={new Date(date.year, date.month, date.year)}
-            time={time}
-            checkAndUpdateEvents={checkAndUpdateEvents}
-          />
-        )
-      )}
-    </div>
-  );
-}
 
-function CreateEventForm({ email, venues }) {
   const {
     stage,
     setStage,
@@ -88,7 +77,75 @@ function CreateEventForm({ email, venues }) {
     attendeesSet,
     addAttendee,
     removeAttendee,
-    createdEvent
+    createdEvent,
+    filteredEventList,
+    onUpdate,
+    eventDetails,
+    venueDetails
+  } = UpdateEventViewHandler({ searchParam, eventList });
+
+  switch (stage) {
+    case "select":
+      return (
+        <SelectEvent
+          onUpdate={onUpdate}
+          eventList={filteredEventList}
+          checkAndUpdateEvents={checkAndUpdateEvents}
+        />
+      );
+    case "event":
+      return (
+        <CreateEventUI
+          onSubmit={onEventFormSubmit}
+          email={email}
+          venues={venues}
+          defaultProduct={eventDetails.product}
+          defaultTopic={eventDetails.topic}
+        />
+      );
+    case "venue":
+      return (
+        <AddVenue
+          venues={venues}
+          onSubmit={onVenueFormSubmit}
+          onBackPress={() => setStage("event")}
+          defaultDate={venueDetails.date}
+          defaultTime={venueDetails.time}
+          defaultVenue={venueDetails.venue}
+        />
+      );
+    case "attendees":
+      return (
+        <AddAttendees
+          onSubmit={onAttendeesListSubmit}
+          onBackPress={() => setStage("venue")}
+          users={attendees}
+          userSet={attendeesSet}
+          addUser={addAttendee}
+          removeUser={removeAttendee}
+        />
+      );
+    case "loading":
+      return <Loading />;
+    case "created":
+      return <EventCreated event={createdEvent} />;
+    default:
+      return <RedirectNotFound />;
+  }
+}
+
+function CreateEvent({ email, venues }) {
+  const {
+    stage,
+    setStage,
+    onEventFormSubmit,
+    onVenueFormSubmit,
+    onAttendeesListSubmit,
+    attendees,
+    attendeesSet,
+    addAttendee,
+    removeAttendee,
+    createdEvent,
   } = CreateEventFormViewHandler();
 
   switch (stage) {
@@ -126,10 +183,6 @@ function CreateEventForm({ email, venues }) {
     default:
       return <RedirectNotFound />;
   }
-}
-
-function UpdateEventForm() {
-  return <form>Update EventForm</form>;
 }
 
 export default Events;

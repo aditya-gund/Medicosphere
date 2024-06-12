@@ -8,6 +8,8 @@ import {
 } from "../../Datasource/Event/Event_mock";
 
 export async function CreateEvent(event, venue, attendees) {
+  console.log("Logging create event ");
+  console.log(venue);
   try {
     const { data } = await createEvent({
       ...event,

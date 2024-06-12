@@ -12,7 +12,7 @@ const Events = [
       profilePic: null,
     },
     date: new Date(),
-    time: new Date().getHours() + ":" + new Date().getMinutes() + " AM",
+    time: "12:00 AM",
     venue: {
       id: 1,
       address: "BR-09, Ardent House",
@@ -44,7 +44,7 @@ const Events = [
     topic: "Test Topic 2",
     host: 2,
     date: new Date(),
-    time: new Date().getHours() + ":" + new Date().getMinutes() + " PM",
+    time: "12:00 AM",
     venue: {
       id: 1,
       address: "BR-09, Ardent House",
@@ -116,7 +116,7 @@ export function getEventsAtVenue(venueId) {
 export function getEventById(eventId) {
   return new Promise((resolve) => {
     setTimeout(
-      resolve({ data: Events.filter((event) => event.eventId === eventId) }),
+      resolve({ data: Events.filter((event) => event.eventId.startsWith(eventId)) }),
       1200
     );
   });

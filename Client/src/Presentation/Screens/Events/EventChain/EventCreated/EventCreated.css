@@ -1,0 +1,141 @@
+.EventCreated{
+    height: 90%;
+    width: 96%;
+    padding: 2%;
+    border-radius: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    background-color: black;
+    flex-wrap: wrap;
+}
+
+.EventCreated>div{
+    background-color: #1d1d1f;
+    color: white;
+    border-radius: 10px;
+}
+
+.hostCard{
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 25%;
+    align-items: center;
+    width: 45%;
+    height: 30%;
+}
+
+.eventCard{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 45%;
+    height: 30%;
+}
+
+.venueCard{
+    background-color: green;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10%;
+    width: 50%;
+    padding: 0 5% 0 5%;
+}
+
+.attendeesList{
+    background-color: #0f0f0f !important;
+    max-height: 60%;
+    width: 100%;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid white;
+}
+
+.hostCard>img{
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.hostCard>div{
+    font-size: x-large;
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.hostCard>div>div:nth-child(2n+1){
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-right: 5px;
+    padding-bottom: 4px;
+    font-weight: bold;
+}
+
+.hostCard>div>div>span{
+    font-size: medium;
+}
+
+.eventDetails{
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.eventDetails>div:nth-child(2n+1)
+{
+    padding-right: 10px;
+}
+
+.venueCard>div{
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.venueCard>div>div:nth-child(2n+1)
+{
+    padding-right: 10px;
+}
+
+.attendeesList>div>img{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.attendeesList>div{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+    background-color: #1d1d1f;
+    gap: 10px;
+    border-bottom: 1px solid white;
+}
+
+.attendeesList>div:nth-child(-n+3)
+{
+    position: sticky;
+    top: 0;
+    background-color: #0f0f0f   ;
+    padding: 5px 10px 5px 10px;
+}
+
+.attendeesList>div:nth-last-child(-n+3)
+{
+    border-bottom: none;
+}

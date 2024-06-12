@@ -1,0 +1,168 @@
+.AttendeesSection{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.Attendees{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
+.Search{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    height: 450px;
+    width: 300px;
+    background-color: #3dd9eb;
+    border-radius: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.Search>button:first-child{
+    border-radius: 50%;
+    position: absolute;
+    aspect-ratio: 1/1;
+    right: 0;
+    top: 0;
+    transform: translateX(40%) translateY(-40%);
+    font-weight: bold;
+    border: none;
+    outline: none;
+    background-color: red;
+    cursor: pointer;
+    color: white;
+}
+
+.searchInputBar{
+    width: 90%;
+    border-radius: 10px;
+    background-color: #7debf5;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+.searchInputBar>input{
+    flex: 1;
+    outline: none;
+    border: none;
+    padding: 12px;
+    background-color: transparent;
+    color: white;
+}
+
+.searchInputBar>.loader, .searchInputBar>img{
+    height: 20px !important;
+    width: 20px !important;
+    object-fit: contain;
+    margin-right: 5px;
+}
+
+.AttendeesHeading{
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+}
+
+.AttendeesHeading>div{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+    
+.AttendeesHeading>div>button{
+    padding: 5px 20px 5px 20px;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    color: white;
+    background-color: blue;
+    border-radius: 10px;
+}
+
+.searchUserList{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5px;
+    width: 100%;
+    align-items: center;
+    height: 85%;
+    overflow-y: scroll;
+}
+
+.searchUserList>div{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
+}
+
+.searchUserList>div>img{
+    aspect-ratio: 1/1;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #dfe4ea;
+}
+
+.searchUserList>div>button{
+    margin-left: auto;
+    width: 30px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: blue;
+    font-size: larger;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchUserList>div>div{
+    display: flex;
+    flex-direction: column;
+    max-width: calc(100%-80px);
+    text-overflow: ellipsis;
+}
+
+.AddedAttendees{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 98%;
+    width: 98%;
+    gap: 10px;
+    padding: 1%;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
