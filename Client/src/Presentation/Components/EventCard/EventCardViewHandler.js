@@ -1,8 +1,7 @@
 import { GetUserByEmail } from "../../../Data/Domain/User/User";
 import { useEffect, useMemo, useState } from "react";
-import { useDispatch } from "react-redux";
-import { showPopup } from "../../Redux/Modal/ModalSlice";
 import { CancelEvent } from "../../../Data/Domain/Event/Event";
+import { useModal } from "../../Redux/Modal/ModalSlice";
 
 const bgColorList = [
   "#FFC312",
@@ -18,25 +17,24 @@ const EventCardViewHandler = ({ hostEmail, eventId, checkAndUpdateEvents }) => {
   const [bgColor, setBgColor] = useState("red");
   const [loadingVenue, setLoadingVenue] = useState(false);
   const [loadingHost, setLoadingHost] = useState(false);
+  const { showPopup, hidePopup } = useModal();
 
-  const dispatch = useDispatch();
-
-  function cancelEvent()
-  {
-    CancelEvent(eventId)
-    .then((data) => {
-      alert(eventId + " deleted successfully.")
+  async function cancelEvent() {
+    const { data, error } = await CancelEvent();
+    if (data) {
+      alert(eventId + " deleted successfully.");
       console.log(data);
       checkAndUpdateEvents();
-    })
-    .catch((error) => {
+    } else {
       alert("Unexpected error encountered while trying to cancel " + eventId);
       console.error(error);
-    })
+    }
+
+    hidePopup();
   }
 
   function ShowCancelMenu() {
-    dispatch(showPopup({ popup: true, modal: "CancelEventModal", modalProps: {onConfirm: cancelEvent, eventId: eventId} }));
+    showPopup("CancelEventModal", { onConfirm: async () => await cancelEvent(), eventId: eventId });
   }
 
   const loading = useMemo(() => {

@@ -6,6 +6,7 @@ function SelectEvent({ eventList, checkAndUpdateEvents, onUpdate }) {
       {eventList.map(
         ({ eventId, product, topic, venue, host, date, time, attendees }) => (
           <EventCard
+            key={eventId}
             eventId={eventId}
             product={product}
             topic={topic}

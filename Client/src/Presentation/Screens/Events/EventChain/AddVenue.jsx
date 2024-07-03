@@ -48,7 +48,7 @@ export function AddVenue({
           -- select venue --
         </option>
         {venues.map((venue) => (
-          <option value={JSON.stringify(venue)}>
+          <option key={JSON.stringify(venue)} value={JSON.stringify(venue)}>
             {venue.address + ", " + venue.state + ", " + venue.country}
           </option>
         ))}
@@ -77,11 +77,11 @@ export function AddVenue({
         required
         disabled={date && date !== "" ? false : true}
       >
-        <option disabled selected value="">
+        <option hidden value="">
           -- select time slot --
         </option>
         {timeSlot.map((slot) => (
-          <option value={slot}> {slot} </option>
+          <option key={slot} value={slot}> {slot} </option>
         ))}
       </select>
       <input type="submit" value="Add Attendees" />
@@ -96,9 +96,6 @@ function AddVenueViewHandler({ defaultVenue, defaultDate, defaultTime }) {
   const [time, setTime] = useState("");
   const [timeSlot, setSlot] = useState([]);
   const [slotLoading, setSlotLoading] = useState(false);
-
-  console.log("Passed default date");
-  console.log(defaultDate);
 
   useEffect(() => {
     async function setTimeSlot() {
@@ -123,7 +120,7 @@ function AddVenueViewHandler({ defaultVenue, defaultDate, defaultTime }) {
     if (defaultDate !== undefined) {
       setDate(defaultDate);
     }
-  }, [setVenue, setDate, defaultDate, defaultVenue]);
+  }, [defaultDate, defaultVenue]);
 
   return {
     venue,

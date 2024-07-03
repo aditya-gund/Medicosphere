@@ -30,10 +30,11 @@ const Events = ({ searchParam }) => {
                   searchParam={searchParam}
                   email={email}
                   venues={venues}
+                  key="AllElements"
                 />
               );
             if (element === CreateEvent)
-              return <CreateEvent email={email} venues={venues} />;
+              return <CreateEvent email={email} venues={venues} key="CreateElement" />;
             else return <RedirectNotFound />;
           })}
       </div>
@@ -45,7 +46,7 @@ function EventOptions(setMode) {
   return (
     <div className="EventOptions">
       {options.map(({ mode, menu }) => (
-        <div onClick={() => setMode(mode)}>{menu}</div>
+        <div key={mode} onClick={() => setMode(mode)}>{menu}</div>
       ))}
     </div>
   );

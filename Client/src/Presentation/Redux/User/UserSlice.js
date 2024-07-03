@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useDispatch, useSelector } from "react-redux";
 
 export const UserSlice = createSlice({
     name: "user",
@@ -26,6 +27,22 @@ export const UserSlice = createSlice({
         }
     }
 });
+
+export function useUser()
+{
+    const user = useSelector((state) => state.user);
+    const dispatch = useDispatch();
+
+    function updateUser(userArg)
+    {
+        dispatch(setUser(userArg));
+    }
+
+    return {
+        user,
+        updateUser
+    }
+}
 
 export const {setUser, removeUser} = UserSlice.actions;
 export default UserSlice.reducer;

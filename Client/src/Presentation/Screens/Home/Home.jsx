@@ -6,6 +6,7 @@ import DashBoard from "../Dashboard/Dashboard";
 import { RedirectNotFound } from "../NotFound/NotFound";
 import Events from "../Events/Events";
 import HomeViewHandler from "./HomeViewHandler";
+import Venue from "../Venue/Venue";
 
 function Home() {
 
@@ -20,6 +21,7 @@ function Home() {
           <Routes>
             <Route path="/" element={<DashBoard />} />
             <Route path="/events" element={<Events searchParam={searchEventParam} />} />
+            <Route path="/venue" element={<Venue />} />
             <Route path="/*" element={<RedirectNotFound />} />
           </Routes>
         </div>

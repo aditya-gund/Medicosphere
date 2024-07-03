@@ -7,12 +7,14 @@
 }
 
 .AppWrapper{
-    flex: 1;
+    height: 100vh;
+    width: 96vw;
     display: flex;
     flex-direction: column;
 }
 
 .Content{
-    flex: 1;
+    height: 92vh;
+    width: 100%;
     display: flex;
 }

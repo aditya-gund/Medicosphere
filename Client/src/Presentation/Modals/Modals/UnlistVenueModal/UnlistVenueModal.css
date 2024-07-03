@@ -1,4 +1,4 @@
-.cancel-event-modal{
+.UnlistVenueModal{
     width: 300px;
     padding: 10px;
     border-radius: 10px;
@@ -7,7 +7,7 @@
     flex-direction: column;
 }
 
-.cancel-event-modal>h2{
+.UnlistVenueModal>h2{
     width: 100%;
     padding-top: 10px;
     margin-top: 0;
@@ -15,7 +15,7 @@
     text-wrap: wrap;
 }
 
-.cancel-event-modal>form{
+.UnlistVenueModal>form{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -25,21 +25,21 @@
     margin-top: 10px;
 }
 
-.cancel-event-modal>form>input{
+.UnlistVenueModal>form>input{
     width: 100%;
     outline: none;
     border: none;
     padding: 5px 0px 5px 0px;
 }
 
-.cancel-event-modal>form>input[type="text"]
+.UnlistVenueModal>form>input[type="text"]
 {
     width: calc(100% - 10px);
     padding-left: 5px;
     padding-right: 5px;
 }
 
-.cancel-event-modal>form>input[type="submit"]
+.UnlistVenueModal>form>input[type="submit"]
 {
     cursor: pointer;
     background-color: #a32425;
@@ -48,19 +48,19 @@
     border-radius: 10px;
 }
 
-.cancel-event-modal>span{
+.UnlistVenueModal>span{
     color: red;
     width: 100%;
     align-self: center;
     text-align: center;
 }
 
-.cancel-event-modal>form>input[type="submit"]:disabled{
+.disabled-submit:disabled{
     background-color: #b33939 !important;
     color: grey !important;
 }
 
-.cancel-event-modal>form>input[type="text"]:disabled{
+.disabled-text:disabled{
     color: white;
     background-color: #585858;
 }

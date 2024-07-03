@@ -75,6 +75,7 @@ export function AddAttendees({
           {matchedUsers.map(
             ({ firstName, lastName, role, email, profilePic }, index) => (
               <UserListItem
+                key={email}
                 firstName={firstName}
                 lastName={lastName}
                 role={role}

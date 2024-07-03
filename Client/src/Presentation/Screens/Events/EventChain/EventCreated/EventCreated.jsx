@@ -1,4 +1,5 @@
 import "./EventCreated.css";
+import { Fragment } from "react";
 
 /**
 Cards:
@@ -82,11 +83,11 @@ function AttendeesCard({ attendeesList }) {
     <div className="attendeesList">
       <div>Person</div><div>Email</div><div>Role</div>
       {attendeesList.map(({ firstName, lastName, email, role, profilePic }) => (
-        <>
+        <Fragment key={email}>
           <div><img src={profilePic?profilePic:"/user.svg"} alt="profile" />{firstName + " " + lastName}</div>
           <div>{email}</div>
           <div>{role}</div>
-        </>
+        </Fragment>
       ))}
     </div>
   );

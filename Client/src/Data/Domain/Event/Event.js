@@ -8,8 +8,6 @@ import {
 } from "../../Datasource/Event/Event_mock";
 
 export async function CreateEvent(event, venue, attendees) {
-  console.log("Logging create event ");
-  console.log(venue);
   try {
     const { data } = await createEvent({
       ...event,
@@ -26,9 +24,11 @@ export async function CancelEvent(eventId) {
   try {
     const { status } = await cancelEvent(eventId);
     if (status === 200)
-      return { data: eventId + " cancelled successfully", error: null };
+      return {data: true, error: null};
+    else
+      return {data: false, error: "Server disallowed request to delete event " + eventId};
   } catch (error) {
-    return { data: null, error };
+    return { data: false, error };
   }
 }
 

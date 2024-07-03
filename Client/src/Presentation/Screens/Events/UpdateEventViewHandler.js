@@ -71,11 +71,8 @@ function UpdateEventViewHandler({ searchParam, eventList }) {
 
   function onUpdate(event) {
     setStage("event");
-    console.log(event);
     const attendees = event.attendees;
     const details = { topic: event.topic, product: event.product };
-    
-    console.log("Formed date");
     const date = {...event.date};
     const venue = {
       date: date.year+"-"+pad(date.month)+"-"+pad(date.date),

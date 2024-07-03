@@ -1,39 +1,39 @@
-import {useDispatch, useSelector} from "react-redux";
 import "./Modal.css";
-import { hidePopup } from "../Redux/Modal/ModalSlice";
+import { useModal } from "../Redux/Modal/ModalSlice";
 import { useMemo } from "react";
 import CancelEventModal from "./Modals/CancelEventModal/CancelEventModal";
 import { RedirectNotFound } from "../Screens/NotFound/NotFound";
+import UnlistVenueModal from "./Modals/UnlistVenueModal/UnlistVenueModal";
+import UpdateVenueModal from "./Modals/UpdateVenueModal/UpdateVenueModal";
 
-function Modal()
-{
-    const popup = useSelector((state) => state.modal.popup);
-    const modalName = useSelector((state) => state.modal.modal);
-    const modalProps = useSelector((state) => state.modal.modalProps);
-    const dispatch = useDispatch();
-    function hideModal()
-    {
-        dispatch(hidePopup());
+function Modal() {
+  const { popup, modal: modalName, modalProps, hidePopup } = useModal();
+  function hideModal() {
+    hidePopup();
+  }
+
+  const modal = useMemo(() => {
+    switch (modalName) {
+      case "":
+        return <></>;
+      case "CancelEventModal":
+        return <CancelEventModal {...modalProps} />;
+      case "UnlistVenueModal":
+        return <UnlistVenueModal {...modalProps} />;
+      case "UpdateVenueModal":
+        return <UpdateVenueModal {...modalProps} />;
+      default:
+        return <RedirectNotFound />;
     }
-    
-    const modal = useMemo(() => {
-        switch(modalName){
-            case "":
-                return <></>
-            case "CancelEventModal":
-                return <CancelEventModal {...modalProps} />
-            default:
-                return <RedirectNotFound />
-        }
-    }, [modalName, modalProps])
+  }, [modalName, modalProps]);
 
-    if(popup)
-    return <div className="modal-wrapper" onClick={() => hideModal()} >
+  if (popup)
+    return (
+      <div className="modal-wrapper" onClick={() => hideModal()}>
         {modal}
-    </div>
-    else
-    return <></>
-    
+      </div>
+    );
+  else return <></>;
 }
 
 export default Modal;

@@ -1,0 +1,100 @@
+.Venue{
+    background-color: blue;
+    height: calc(100% - 10px);
+    width: calc(100% - 10px);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 5px !important;
+    overflow: hidden;
+}
+
+.Venue>div{
+    flex-grow: 0;
+}
+
+.venue-list{
+    height: calc(100% - 20px);
+    max-height: calc(100% - 20px);
+    width: calc(100% - 320px);
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.venue-list-data{
+    max-height: calc(100% - 80px);
+    background-color: blue;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: 100px repeat(6, auto);
+    background-color: #1d1d1f;
+    padding-bottom: 5px;
+    border-radius: 5px;
+}
+
+.venue-list-data>*:nth-child(n+8)
+{
+    background-color: white;
+}
+
+.venue-list-data>*:nth-child(-n+7)
+{
+    color: white;
+    position: sticky;
+    top: 0;
+    padding-top: 10px;
+    background-color: #1d1d1f;
+}
+
+.venue-list-data>*:nth-child(7n+1)
+{
+    padding-left: 10px;
+}
+
+.venue-list-data>button{
+    min-width: 60px;
+    height: fit-content;
+    padding: 2px 0 2px 0;
+    border: 1px solid black;
+    background-color: blue !important;
+    font-weight: bold;
+    color: white;
+}
+
+.new-venue{
+    background-color: white;
+    height: fit-content;
+    width: 300px;
+    padding: 10px 10px 20px 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.new-venue>form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.new-venue>form>select{
+    padding: 5px 10px 5px 10px;
+}
+
+.new-venue>form>input{
+    padding: 5px 10px 5px 10px;
+}
+
+.new-venue>form>input[type="submit"]{
+    background-color: blue;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}

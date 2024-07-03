@@ -79,7 +79,7 @@ export function createEvent(event) {
 
 export function cancelEvent(eventId) {
   return new Promise((resolve) => {
-    setTimeout(resolve({ status: 200 }), 1200);
+    setTimeout(() => resolve({ status: 200 }), 3000);
   });
 }
 
