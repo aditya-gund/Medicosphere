@@ -1,0 +1,107 @@
+Works with appropriate stakeholders to determine user requirements for a feature.
+Supports identification of dependencies, and the development of design documents for a product feature with oversight.
+With guidance, learns to create and implement code for a product, service, or feature reusing code as applicable.
+Assists and learns about breaking down work items into tasks and provides estimation.
+Acts as a Designated Responsible Individual (DRI) in monitoring system/product feature/service for degradation, downtime, or interruptions for simple problems, and recommends actions to restore system/product/service by following the playbook.
+Reviews current developments and proactively seeks new knowledge that will improve the availability, reliability, efficiency, observability, and performance of products while also driving consistency in monitoring and operations at scale.
+ Bachelor's Degree in Computer Science, or related technical discipline with proven experience coding in languages including, but not limited to, C, C++, C#, Java, JavaScript, or Python
+
+o OR equivalent experience.
+
+ 
+
+Preferred Qualifications:
+
+ 
+
+• 2+ years of professional software engineering experience designing, building, and running cloud services at large scale including but not limited to C#, C++, or Java.
+• Experience delivering scalable and resilient services at large enterprise scale
+• Excellent coding skills, strong in OOPS, OOAD, design patterns and their application
+• Strong with Microsoft .NET technologies (C# and the .NET Framework)
+• Familiarity with distributed systems and event driven architectures
+• Experience with high throughput customer facing APIs (REST)
+• Hands on experience building and maintaining REST microservices using NoSQL storage or RDBMS
+• Experience with SQL databases or other relational database systems, including data modeling
+• Familiarity with NoSQL document stores (e.g. MongoDB, Azure Cosmos DB) and/or graph DBs
+• Front-end experience with Angular, HTML/CSS, JavaScript, and/or TypeScript
+• Strong coding, debugging and problem-solving skills
+• Interest in delivering and influencing large transformational projects
+• Experience with Devops, CI/CD, Infrastructure as Code (IaC), Monitoring and Logging platrforms like Grafana, Prometheus etc.
+• Able to work efficiently, prioritize workflow, and meet deadlines
+• Good communications skills; able to share complex ideas with other teams
+• Proven ability to deal with ambiguity and drive for clarity
+2+ years of professional software engineering experience designing, building, and running cloud services at large scale in C#, .Net or any high-level programming language.
+Excellent coding skills, strong understanding in OOPS, design patterns and their application.
+Self-learner with passion for technologies.
+Ability to both work independently and coordinate across geographies.
+Ability to communicate complex ideas and concepts to a variety of cross-group stakeholders.
+Strong organization skills, a bias for action, and ability to deliver results.
+Proven ability to deal with ambiguity and drive for clarity.
+Demonstrated ability to work efficiently, prioritize workflow, ramp quickly, and meet demanding deadlines.
+Preferred Qualifications:
+
+Proficient working knowledge of cloud-computing environments like Microsoft Azure, AWS, GCP - Azure preferred.
+Hands on experience in an object-oriented programming language such as C#, Java, or Scala.
+Strong software design and problem-solving skills.
+Experience with modern software services engineering practices such as testing in production, live monitoring, data driven engineering.
+Rapid prototyping and iteration skills the next line.
+Experience with web service development and familiar with related technologies.
+Basic automation scripting skills with PowerShell and developing modules.
+Experience building and shipping production grade software or services.
+Experience using agile methodologies or test-driven development (TDD).
+
+Required Qualifications:
+
+Bachelor's Degree in Computer Science, or related technical discipline with proven experience coding in languages including, but not limited to, C, C++, C#, Java, JavaScript, or Python
+OR equivalent experience.
+Other Qualifications:
+
+Microsoft Cloud Background Check: This position will be required to pass the Microsoft Cloud Background Check upon hire/transfer and every two years thereafter.
+Preferred Qualifications:
+
+Bachelor's Degree in Computer Science
+OR related technical field AND 1+ year(s) technical engineering experience with coding in languages including, but not limited to, C, C++, C#, Java, JavaScript, OR Python
+OR Master's Degree in Computer Science or related technical field with proven experience coding in languages including, but not limited to, C, C++, C#, Java, JavaScript, or Python
+OR equivalent experience.
+Experience with
+any NoSQL database, such as MongoDB, Cassandra, Redis,
+AND RESTful APIs, microservices, distributed systems, and data structures,
+AND systems programming, operating systems, distributed systems, databases, cloud services including high-performance distributed storage and networking.
+
+ Qualifications
+Required Qualifications:
+
+Bachelor's Degree in Computer Science, or related technical discipline with proven experience coding in languages including, but not limited to, C, C++, C#, Java, JavaScript, or Python
+OR equivalent experience.
+Other Qualifications:
+
+Microsoft Cloud Background Check: This position will be required to pass the Microsoft Cloud Background Check upon hire/transfer and every two years thereafter.
+ 
+
+Preferred Qualifications:
+
+Bachelor's Degree in Computer Science
+OR related technical field AND 1+ year(s) technical engineering experience with coding in languages including, but not limited to, C, C++, C#, Java, JavaScript,
+OR Python
+OR Master's Degree in Computer Science or related technical field with proven experience coding in languages including, but not limited to, C, C++, C#, Java, JavaScript, or Python
+OR equivalent experience.
+
+ Qualifications
+Required Qualifications:
+
+Bachelor's Degree in Computer Science, or related technical discipline with proven experience coding in languages including, but not limited to, C, C++, C#, Java, JavaScript, or Python
+OR equivalent experience.
+Excellence in software engineering practices.
+Knowledge of software QA methodologies, tools, and processes.
+Other Qualifications:
+
+Microsoft Cloud Background Check: This position will be required to pass the Microsoft Cloud Background Check upon hire/transfer and every two years thereafter.
+Preferred Qualifications:
+
+Bachelor's Degree in Computer Science
+OR related technical field AND 1+ year(s) technical engineering experience with coding in languages including, but not limited to, C, C++, C#, Java, JavaScript, OR Python
+OR Master's Degree in Computer Science or related technical field with proven experience coding in languages including, but not limited to, C, C++, C#, Java, JavaScript, or Python
+OR equivalent experience.
+Develop or specify standards, methods, or procedures to determine product quality or release readiness.
+Experience in building quality products and services preferably in distributed systems.
+ 
