@@ -16,7 +16,8 @@ function Venue() {
     onUnlist,
     loadingVenues,
     onUpdatePress,
-    onNewVenueFormSubmit
+    onNewVenueFormSubmit,
+    registeringVenue,
   } = VenueViewHandler();
   return (
     <div className="Venue">
@@ -71,6 +72,7 @@ function Venue() {
           setCity={setCity}
           setAddress={setAddress}
           onSubmit={onNewVenueFormSubmit}
+          loading={registeringVenue}
           submitValue={"Register Venue"}
         />
       </div>

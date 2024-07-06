@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import {
   GetAllVenues,
+  RegisterVenue,
   UnlistVenue,
   UpdateVenue,
 } from "../../../Data/Domain/Venue/Venue";
@@ -13,10 +14,12 @@ function VenueViewHandler() {
   const [state, setState] = useState({});
   const [city, setCity] = useState({});
   const [loadingVenues, setLoadingVenues] = useState(true);
+  const [registeringVenue, setRegisteringVenue] = useState(false);
 
   const { showPopup, hidePopup } = useModal();
 
   const updateVenueList = useCallback(async () => {
+    setLoadingVenues(true);
     const { data, error } = await GetAllVenues();
     if (!error) {
       setVenues(data);
@@ -25,7 +28,7 @@ function VenueViewHandler() {
       alert("Oops! An error occurred while trying to fetch venues");
       console.error(error);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     updateVenueList();
@@ -35,6 +38,7 @@ function VenueViewHandler() {
     const unlist = await UnlistVenue(venueId);
     if (unlist) {
       alert("Venue deleted successfully.");
+      updateVenueList();
     } else {
       alert(
         "Oops! we ran into an issue while trying to complete your request."
@@ -43,19 +47,29 @@ function VenueViewHandler() {
     hidePopup();
   }
 
-  async function update({ id, address, country, city, state }, newValue)
-  {
-    if(address !== newValue.address || country !== newValue.country || city !== newValue.city || state !== newValue.state)
-    {
-      const {data, error} = await UpdateVenue(id,address, state, city, country);
-      if(data)
-      {
+  async function update({ id, address, country, city, state }, newValue) {
+    if (
+      address !== newValue.address ||
+      country !== newValue.country ||
+      city !== newValue.city ||
+      state !== newValue.state
+    ) {
+      const { data, error } = await UpdateVenue(
+        id,
+        newValue.address,
+        newValue.state,
+        newValue.city,
+        newValue.country
+      );
+      if (data) {
         alert("Venue updated successfully.");
         updateVenueList();
-      }
-      else
-      {
-        alert("Oops! an error occurred while trying to update venue " + id + ". Please check console for more details"); 
+      } else {
+        alert(
+          "Oops! an error occurred while trying to update venue " +
+            id +
+            ". Please check console for more details"
+        );
         console.error(error);
       }
     }
@@ -67,13 +81,45 @@ function VenueViewHandler() {
   }
 
   function onUpdatePress({ id, address, country, city, state }) {
-    showPopup("UpdateVenueModal", { id, address, country, city, state, onUpdate: update });
+    showPopup("UpdateVenueModal", {
+      id,
+      address,
+      country,
+      city,
+      state,
+      onUpdate: update,
+    });
   }
 
-  function onNewVenueFormSubmit(e)
-  {
+  async function onNewVenueFormSubmit(e) {
     e.preventDefault();
-    console.log("Called submit for new event");
+    function getElement(key) {
+      return e.target.elements[key].value;
+    }
+    setRegisteringVenue(true);
+    const { data, error } = await RegisterVenue(
+      getElement("address"),
+      getElement("city"),
+      getElement("state"),
+      getElement("country")
+    );
+    if (!error) {
+      setRegisteringVenue(false);
+      setAddress("");
+      setCity({});
+      setState({});
+      setCountry({});
+      alert("Event created successfully");
+      console.log(data);
+      updateVenueList();
+    } else {
+      setRegisteringVenue(false);
+      alert(
+        "Unable to create due to unexpected issues. Please check console for details."
+      );
+      console.error(error);
+    }
+    
   }
 
   return {
@@ -89,7 +135,8 @@ function VenueViewHandler() {
     onUpdatePress,
     address,
     setAddress,
-    onNewVenueFormSubmit
+    onNewVenueFormSubmit,
+    registeringVenue
   };
 }
 

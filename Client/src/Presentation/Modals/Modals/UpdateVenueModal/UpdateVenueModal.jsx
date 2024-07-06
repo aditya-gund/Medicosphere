@@ -8,14 +8,28 @@ function UpdateVenueModal({
   country: old_country,
   state: old_state,
   city: old_city,
+  onUpdate,
 }) {
   const [address, setAddress] = useState(old_address);
   const [country, setCountry] = useState(old_country);
   const [city, setCity] = useState(old_city);
   const [state, setState] = useState(old_state);
+  const [loading, setLoading] = useState(false);
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
+    setLoading(true);
+    await onUpdate(
+      {
+        id,
+        address: old_address,
+        city: old_city,
+        state: old_state,
+        country: old_country,
+      },
+      { id, address, city, state, country }
+    );
+    setLoading(false);
     console.log("Called submit of modal");
   }
 
@@ -33,6 +47,7 @@ function UpdateVenueModal({
         setCountry={setCountry}
         onSubmit={onSubmit}
         submitValue="Update Venue"
+        loading={loading}
       />
     </div>
   );

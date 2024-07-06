@@ -11,6 +11,7 @@ function VenueDetailsForm({
   city,
   setCity,
   onSubmit,
+  loading,
   submitValue,
 }) {
   const countries = useMemo(() => GetCountries(), []);
@@ -21,6 +22,7 @@ function VenueDetailsForm({
         type="text"
         placeholder="Enter Address"
         value={address}
+        name="address"
         onChange={(e) => setAddress(e.target.value)}
       />
       <select
@@ -37,7 +39,7 @@ function VenueDetailsForm({
           --select country--
         </option>
         {countries.map(({ country }) => (
-          <option value={country}>{country}</option>
+          <option key={country} value={country}>{country}</option>
         ))}
       </select>
       <select
@@ -57,7 +59,7 @@ function VenueDetailsForm({
           ? countries
               .filter((countryValue) => countryValue.country === country)[0]
               .states.map((stateValue) => (
-                <option value={stateValue.state}>{stateValue.state}</option>
+                <option key={stateValue.state} value={stateValue.state}>{stateValue.state}</option>
               ))
           : ""}
       </select>
@@ -77,11 +79,16 @@ function VenueDetailsForm({
               .filter((countryValue) => countryValue.country === country)[0]
               .states.filter((stateValue) => stateValue.state === state)[0]
               .cities.map((cityValue) => (
-                <option value={cityValue}>{cityValue}</option>
+                <option key={cityValue} value={cityValue}>{cityValue}</option>
               ))
           : ""}
       </select>
-      <input type="submit" value={submitValue} />
+      {
+        loading?
+        <div className="loader" />
+        :
+        <input type="submit" value={submitValue} />
+      }
     </form>
   );
 }
