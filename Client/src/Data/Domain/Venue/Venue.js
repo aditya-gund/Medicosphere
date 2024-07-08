@@ -3,6 +3,7 @@ import {
   getAvailability,
   getCountries,
   getVenueById,
+  registerVenue,
   unlistVenue,
   updateVenue,
 } from "../../Datasource/Venue/Venue_mock";
@@ -41,21 +42,34 @@ export function GetCountries() {
 export async function UnlistVenue(venueId) {
   try {
     const { status } = await unlistVenue(venueId);
-    if(status === 200)
-      return true;
+    if (status === 200) return true;
     return false;
   } catch (error) {
     return { data: null, error };
   }
 }
 
-export async function UpdateVenue(venueId, address, state, city, country)
-{
+export async function UpdateVenue(venueId, address, state, city, country) {
   try {
-    const {status} = await updateVenue({id: venueId, address, state, city, country});
-    if(status === 200) return {data: true, error: null};
-    else return {data: false, error: "Server disallowed request"};
+    const { status } = await updateVenue({
+      id: venueId,
+      address,
+      state,
+      city,
+      country,
+    });
+    if (status === 200) return { data: true, error: null };
+    else return { data: false, error: "Server disallowed request" };
   } catch (error) {
-    return {data: false, error};
+    return { data: false, error };
+  }
+}
+
+export async function RegisterVenue(address, city, state, country) {
+  try {
+    const { data } = await registerVenue({ address, state, city, country });
+    return { data, error: null };
+  } catch (error) {
+    return { data: null, error };
   }
 }
