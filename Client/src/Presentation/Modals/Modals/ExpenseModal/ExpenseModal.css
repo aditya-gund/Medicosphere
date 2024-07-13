@@ -1,0 +1,36 @@
+.expense-form{
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #282828;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.expense-form>h2{
+    width: calc(100% - 20px);
+}
+
+.expense-form>input[type="text"], .expense-form>input[type="number"]{
+    width: 90%;
+    padding: 10px 5px 10px 5px;
+}
+
+.expense-form>input[type="submit"]{
+    margin-top: 10px;
+    width: 90%;
+    padding: 5px;
+    font-weight: bold;
+    background-color: blue;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}
+
+.expense-form>select{
+    width: calc(90% + 15px);
+    padding: 5px 0px 5px 0px;
+}

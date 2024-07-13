@@ -1,0 +1,86 @@
+.ExpenseDetails{
+    background-color: beige;
+    height: calc(100% - 20px);
+    width: calc(100% - 20px);
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-grow: 0;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.TableCard>table{
+    display: block;
+    border-collapse: separate;
+    border-spacing: 0;
+    max-height: 70%;
+    overflow-y: scroll;
+    border: 1px solid grey;
+}
+
+.TableCard td{
+    padding: 2px 10px 2px 10px;
+}
+
+.TableCard thead th{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    border-bottom: 1px solid grey;
+}
+
+.TableCard th{
+    padding-bottom: 15px;
+}
+
+.TableCard tbody{
+    margin-top: 10px;
+}
+
+.TableCard td button{
+    border: none;
+    outline: none;
+    transition: all 0.2s ease-in;
+}
+
+.TableCard td button:hover{
+    background-color: blue;
+    color: white;
+}
+
+.TableCard tr:nth-child(2n)
+{
+    background-color: #f9fafb;
+}
+
+.TableCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: white;
+    border-radius: 10px;
+    height: 96%;
+    padding: 10px;
+    overflow: hidden;
+    gap: 10px;
+    width: fit-content;
+}
+
+.TableCard .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.TableCard .header>button{
+    height: fit-content;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}

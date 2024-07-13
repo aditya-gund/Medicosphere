@@ -5,7 +5,7 @@ import {
   UnlistVenue,
   UpdateVenue,
 } from "../../../Data/Domain/Venue/Venue";
-import { useModal } from "../../Redux/Modal/ModalSlice";
+import { useModal } from "../../Context/ModalContext";
 
 function VenueViewHandler() {
   const [address, setAddress] = useState("");

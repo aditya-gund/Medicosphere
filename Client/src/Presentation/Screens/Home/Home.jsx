@@ -7,6 +7,8 @@ import { RedirectNotFound } from "../NotFound/NotFound";
 import Events from "../Events/Events";
 import HomeViewHandler from "./HomeViewHandler";
 import Venue from "../Venue/Venue";
+import { Expense } from "../Expense/Expense";
+import { ExpenseDetails } from "../ExpenseDetails/ExpenseDetails";
 
 function Home() {
 
@@ -22,6 +24,8 @@ function Home() {
             <Route path="/" element={<DashBoard />} />
             <Route path="/events" element={<Events searchParam={searchEventParam} />} />
             <Route path="/venue" element={<Venue />} />
+            <Route path="/expenses" element={<Expense />} />
+            <Route path="/expense-details/:eventId" element={<ExpenseDetails />} />
             <Route path="/*" element={<RedirectNotFound />} />
           </Routes>
         </div>

@@ -1,0 +1,13 @@
+.Expense{
+    background-color: blue;
+    height: calc(100% - 10px);
+    width: calc(100% - 10px);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 5px !important;
+    overflow: hidden;
+    overflow-y: scroll;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,66 @@
+.DeleteExpenseModal{
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #282828;
+    display: flex;
+    flex-direction: column;
+}
+
+.DeleteExpenseModal>h2{
+    width: 100%;
+    padding-top: 10px;
+    margin-top: 0;
+    border-bottom: 1px solid grey;
+    text-wrap: wrap;
+}
+
+.DeleteExpenseModal>form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.DeleteExpenseModal>form>input{
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 5px 0px 5px 0px;
+}
+
+.DeleteExpenseModal>form>input[type="text"]
+{
+    width: calc(100% - 10px);
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.DeleteExpenseModal>form>input[type="submit"]
+{
+    cursor: pointer;
+    background-color: #a32425;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+}
+
+.DeleteExpenseModal>span{
+    color: red;
+    width: 100%;
+    align-self: center;
+    text-align: center;
+}
+
+.disabled-submit:disabled{
+    background-color: #b33939 !important;
+    color: grey !important;
+}
+
+.disabled-text:disabled{
+    color: white;
+    background-color: #585858;
+}

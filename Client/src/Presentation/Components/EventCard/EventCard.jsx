@@ -34,7 +34,7 @@ const EventCard = ({eventId, product, topic, venue, hostEmail, date, time, check
                 </h4>
                 Location: {venue? venue.address + ", " + venue.state + ", " + venue.country : ""}<br/><br/>
                 Date: {(date.getDate() + " " + date.getMonth() + " " + date.getFullYear()).replaceAll(" ", "/") + " " + time}<br/>
-                eventId: {eventId}<br></br>
+                Event ID: {eventId}<br></br>
                 <div className="buttons">
                     <button onClick={() => ShowCancelMenu()} style={{color: "red"}} >
                         Cancel Event

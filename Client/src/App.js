@@ -7,11 +7,13 @@ import Home from "./Presentation/Screens/Home/Home";
 import { Provider } from "react-redux";
 import store from "./store";
 import Modal from "./Presentation/Modals/Modal";
+import { ModalContextProvider } from "./Presentation/Context/ModalContext";
 
 function App() {
   return (
     <Provider store={store}>
       {/* <UserContextProvider> */}
+      <ModalContextProvider>
         <div className="App">
           <BrowserRouter>
           <Modal />
@@ -22,6 +24,7 @@ function App() {
             </Routes>
           </BrowserRouter>
         </div>
+      </ModalContextProvider>
       {/* </UserContextProvider> */}
     </Provider>
   );

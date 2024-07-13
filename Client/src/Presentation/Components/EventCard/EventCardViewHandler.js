@@ -1,7 +1,7 @@
 import { GetUserByEmail } from "../../../Data/Domain/User/User";
 import { useEffect, useMemo, useState } from "react";
 import { CancelEvent } from "../../../Data/Domain/Event/Event";
-import { useModal } from "../../Redux/Modal/ModalSlice";
+import { useModal } from "../../Context/ModalContext";
 
 const bgColorList = [
   "#FFC312",
