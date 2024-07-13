@@ -9,6 +9,7 @@ import HomeViewHandler from "./HomeViewHandler";
 import Venue from "../Venue/Venue";
 import { Expense } from "../Expense/Expense";
 import { ExpenseDetails } from "../ExpenseDetails/ExpenseDetails";
+import { EventDetails } from "../EventDetails/EventDetails";
 
 function Home() {
 
@@ -26,6 +27,7 @@ function Home() {
             <Route path="/venue" element={<Venue />} />
             <Route path="/expenses" element={<Expense />} />
             <Route path="/expense-details/:eventId" element={<ExpenseDetails />} />
+            <Route path="/event-details/:eventId" element={<EventDetails />} />
             <Route path="/*" element={<RedirectNotFound />} />
           </Routes>
         </div>

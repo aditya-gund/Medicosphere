@@ -1,5 +1,7 @@
+import { useMemo } from "react";
 import "./SideBar.css";
 import SideBarViewHandler from "./SideBarViewHandler";
+import { useLocation } from "react-router-dom";
 
 function button(src, label, onClick, active) {
   return (
@@ -15,8 +17,16 @@ function button(src, label, onClick, active) {
 }
 
 function SideBar() {
-  const active = "Home";
+  //const active = "Home";
   const { redirect } = SideBarViewHandler();
+  const location = useLocation();
+  const active = useMemo(() => {
+    const currentUrl = navs.filter(({link}) => (location.pathname.toLowerCase().endsWith(link.toLowerCase())));
+    if(currentUrl.length === 0)
+      return "";
+    else return currentUrl[0].label;
+  }, [location])
+
   return (
     <div className="SideBar">
       <div className="AppLogo">
@@ -35,7 +45,7 @@ const navs = [
   {
     src: "/home.svg",
     label: "Home",
-    link: "/Home/",
+    link: "/Home",
   },
   {
     src: "/Events.svg",

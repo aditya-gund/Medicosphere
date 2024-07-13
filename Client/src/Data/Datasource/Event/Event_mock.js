@@ -42,7 +42,13 @@ const Events = [
     eventId: "Event2",
     product: "Test Product 2",
     topic: "Test Topic 2",
-    host: 2,
+    host: {
+      firstName: "Aditya",
+      lastName: "Gund",
+      email: "test1@gmail.com",
+      role: "ADMIN",
+      profilePic: null,
+    },
     date: new Date(),
     time: "12:00 AM",
     venue: {
@@ -114,9 +120,15 @@ export function getEventsAtVenue(venueId) {
 }
 
 export function getEventById(eventId) {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
+    const data = Events.filter((event) => event.eventId === eventId);
     setTimeout(
-      resolve({ data: Events.filter((event) => event.eventId.startsWith(eventId)) }),
+      () => {
+        if(data.length > 0)
+          resolve({ data:  data[0]})
+        else
+          reject(new Error("Event not found."));
+      },
       1200
     );
   });

@@ -1,0 +1,30 @@
+.event-row{
+    display: flex;
+    height: 50px;
+    flex-direction: row;    
+    align-items: center;
+}
+
+.event-row>img{
+    border-radius: 50%;
+    background-color: #dddddd;
+    height: 40px;
+    object-fit: contain;
+}
+
+.event-row>button{
+    margin-left: auto;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 2px solid #d1d5dd;
+    outline: none;
+    background-color: white;
+    height: fit-content;
+    padding: 5px 10px 5px 10px;
+    transition: all 0.2s ease-in;
+}
+
+.event-row>button:hover{
+    background-color: #f9fafb;
+}

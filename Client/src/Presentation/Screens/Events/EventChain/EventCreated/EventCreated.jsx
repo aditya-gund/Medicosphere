@@ -1,13 +1,6 @@
 import "./EventCreated.css";
 import { Fragment } from "react";
 
-/**
-Cards:
-user
-venue
-event
-attendees
- */
 export function EventCreated({
   event: {
     product,

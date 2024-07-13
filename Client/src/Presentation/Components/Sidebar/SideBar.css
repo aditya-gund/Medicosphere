@@ -24,6 +24,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    transition: all 0.2s ease-out;
 }
 
 .button>div{
@@ -43,9 +44,11 @@
 .SideBar>.active>div{
     background-color: red;
     border-radius: 50%;
+    transition: all 0.2s ease-out;
 }
 
 .SideBar>.active{
     width: 100%;
     border-right: 5px solid red;
+    transition: all 0.2s ease-out;
 }
