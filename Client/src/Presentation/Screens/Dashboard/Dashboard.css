@@ -6,4 +6,14 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    gap: 10px;
 }
+
+@media only screen and (max-width: 800px)
+  {
+    .Dashboard{
+        flex-direction: column;
+    }
+  }

@@ -1,0 +1,57 @@
+.user-details{
+    height: 100%;
+    width: 100%;
+    background-color: beige;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.UserRow{
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 25%;
+    align-items: center;
+    width: 45%;
+    height: 30%;
+    background-color: white;
+}
+
+.UserRow>img{
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    background-color: #a29d97;
+}
+
+.UserRow>div{
+    font-size: x-large;
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.UserRow>div>div:nth-child(2n+1){
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-right: 5px;
+    padding-bottom: 4px;
+    font-weight: bold;
+}
+
+.UserRow>div>div>span{
+    font-size: medium;
+}
+
+.UserRow>div>button{
+    background-color: white;
+    outline: none;
+    border: 2px solid #a29d97;
+    font-size: 14px;
+    padding: 5px 10px 5px 10px;
+    margin-top: 10px;
+    transition: all 0.2s ease-in;
+}

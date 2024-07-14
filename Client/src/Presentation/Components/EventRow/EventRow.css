@@ -23,8 +23,18 @@
     height: fit-content;
     padding: 5px 10px 5px 10px;
     transition: all 0.2s ease-in;
+    text-wrap: nowrap;
 }
 
 .event-row>button:hover{
     background-color: #f9fafb;
+}
+
+.optional-data{
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+}
+
+@media only screen and (max-width: 600px) {
+    
 }

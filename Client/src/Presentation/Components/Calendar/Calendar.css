@@ -1,4 +1,4 @@
-@media only screen and (min-width: 601px) {
+/* @media only screen and (min-width: 601px) {
   .Calendar {
     width: 60%;
     height: 90%;
@@ -88,15 +88,16 @@
     border-radius: 5px;
     text-overflow: ellipsis;
   }
-}
+} */
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) { */
   .Calendar {
     width: 300px;
     min-width: 300px;
     flex-shrink: 0;
     aspect-ratio: 1/1;
     background-color: #ffffff;
+    border-bottom: 1px solid grey;
   }
 
   .Head {
@@ -154,4 +155,33 @@
     background-color: aquamarine;
     color: white;
   }
-}
+
+  .calendar-card{
+    background-color: white;
+    height: calc(100% - 30px);
+    width: 40%;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    min-width: 350px;
+    min-height: 600px;
+  }
+
+  .events-on-day{
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  .events-on-day>div:not(:last-child){
+    border-bottom: 1px solid #e5e7eb !important;
+  }
+
+/* } */

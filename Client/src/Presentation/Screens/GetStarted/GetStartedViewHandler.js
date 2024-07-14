@@ -11,6 +11,7 @@ function GetStartedViewHandler() {
   const navigate = useNavigate();
   // const { setUser } = useUser();
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   // useEffect(() => {
   //   setUser();
@@ -29,11 +30,12 @@ function GetStartedViewHandler() {
     const values = new FormData(form.current);
     const email = values.get("email");
     const password = values.get("password");
+    setLoading(true);
     Login(email, password).then(({ data, error }) => {
 
       if (data) {
         // setUser(data.firstname, data.lastname, data.email, data.role);
-        dispatch(setUser({firstName: data.firstName,lastName: data.lastName,email: data.email, role: data.role}));
+        dispatch(setUser({firstName: data.firstName,lastName: data.lastName,email: data.email, role: data.role, id: data.id}));
         navigate("/home");
       } else {
         if (error && (error.response.status === 401 || error.response.status === 403)) {
@@ -42,6 +44,7 @@ function GetStartedViewHandler() {
           alert("Oops!!! Looks like the api has some issues");
         }
       }
+      setLoading(false);
       // if (data === true) {
       //   navigate("/home", { state: { email } });
       // } else if (data === false) {
@@ -62,6 +65,7 @@ function GetStartedViewHandler() {
     const lastName = values.get("lastName");
     const confirmPassword = values.get("confirmPassword");
     const role = values.get("role");    
+    setLoading(true);
 
     if (confirmPassword === password) {
       Signup(firstName, lastName, email, password, role).then(({ data, error }) => {
@@ -75,9 +79,11 @@ function GetStartedViewHandler() {
             alert("Oops!!! Looks like the api has some issues");
           }
         }
+        setLoading(false);
       });
     } else {
       alert("Password does not match with confirm password");
+      setLoading(false);
     }
   }
 
@@ -88,6 +94,7 @@ function GetStartedViewHandler() {
     form,
     login,
     signup,
+    loading
   };
 }
 

@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
 import "./TopBar.css";
+import { useUser } from "../../Redux/User/UserSlice";
 
 function TopBar({ setSearch, searchParam }) {
   const firstname = useSelector((state) => state.user.firstName);
+  const {logout} = useUser();
 
   return (
     <div className="TopBar">
@@ -26,8 +28,8 @@ function TopBar({ setSearch, searchParam }) {
             padding: "2px",
           }}
         />
-        <img src="/notifications.svg" alt="notifications" />
-        <button>
+        {/* <img src="/notifications.svg" alt="notifications" /> */}
+        <button onClick={() => logout()}>
           <div>Logout</div>
           <img src="/logOut.svg" alt="logout" />
         </button>

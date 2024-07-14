@@ -34,7 +34,9 @@ export function EventDetails() {
   );
   else if(loading)
   {
-    return <div className="loader"></div>
+    return <div style={{height: "100%", width: "100%", display: "flex", alignItems: "center", justifyContent: "center"}}>
+      <div className="loader"></div>
+    </div>
   }
   else
   {

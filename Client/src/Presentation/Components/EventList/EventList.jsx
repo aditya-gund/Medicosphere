@@ -7,7 +7,7 @@ function EventList() {
 
   return (
     <div className="EventList">
-        <h2>Events</h2>
+        <h2>All Events</h2>
       <div>
         {events.map(
           ({

@@ -31,7 +31,8 @@ function Intro() {
   );
 }
 
-function Login(setSignupMode, form, login) {
+function Login(setSignupMode, form, login, loading) {
+
   return (
     <>
       <div className="ActiveMode">
@@ -41,13 +42,13 @@ function Login(setSignupMode, form, login) {
       <form className="GetStartedForm" ref={form} onSubmit={(e) => login(e)}>
         <input type="email" placeholder="Email" name="email" />
         <input type="password" placeholder="Password" name="password" />
-        <input type="submit" value="LOGIN" key={"submitButton"} />
+        {!loading?<input type="submit" value="LOGIN" key={"submitButton"} />:<div className="loader"></div>}
       </form>
     </>
   );
 }
 
-function Signup(setLoginMode, form, signup) {
+function Signup(setLoginMode, form, signup, loading) {
   return (
     <>
       <div className="ActiveMode">
@@ -69,7 +70,7 @@ function Signup(setLoginMode, form, signup) {
           <option value="MANAGER">Manager</option>
           <option value="ADMIN">Admin</option>
         </select>
-        <input type="submit" value="SIGNUP" key={"submitButton"} />
+        {!loading?<input type="submit" value="SIGNUP" key={"submitButton"} />:<div className="loader"></div>}
       </form>
     </>
   );
@@ -82,7 +83,7 @@ function NotFound() {
 }
 
 function GetStarted() {
-  const { screenMode, setLoginMode, setSignupMode, form, login, signup } =
+  const { screenMode, setLoginMode, setSignupMode, form, login, signup, loading } =
     GetStartedViewHandler();
   return (
     <div className="GetStartedWrapper">
@@ -90,9 +91,9 @@ function GetStarted() {
         <div className="Intro">{Intro()}</div>
         <div className="Options">
           {screenMode === "login"
-            ? Login(setSignupMode, form, login)
+            ? Login(setSignupMode, form, login, loading)
             : screenMode === "signup"
-            ? Signup(setLoginMode, form, signup)
+            ? Signup(setLoginMode, form, signup, loading)
             : NotFound()}
         </div>
       </div>

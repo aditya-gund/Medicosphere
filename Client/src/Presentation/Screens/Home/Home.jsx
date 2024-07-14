@@ -10,6 +10,7 @@ import Venue from "../Venue/Venue";
 import { Expense } from "../Expense/Expense";
 import { ExpenseDetails } from "../ExpenseDetails/ExpenseDetails";
 import { EventDetails } from "../EventDetails/EventDetails";
+import { User } from "../User/User";
 
 function Home() {
 
@@ -28,6 +29,7 @@ function Home() {
             <Route path="/expenses" element={<Expense />} />
             <Route path="/expense-details/:eventId" element={<ExpenseDetails />} />
             <Route path="/event-details/:eventId" element={<EventDetails />} />
+            <Route path="/user-details/:userId" element={<User />} />
             <Route path="/*" element={<RedirectNotFound />} />
           </Routes>
         </div>

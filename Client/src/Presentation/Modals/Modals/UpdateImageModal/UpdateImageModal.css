@@ -1,0 +1,35 @@
+.update-image-modal{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 2px dashed #c3c5c9;
+    width: 40%;
+    min-width: 300px;
+    align-items: center;
+    background-color: #282828;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.update-image-modal>img{
+    width: 200px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.update-image-modal>label{
+    color: #6366f1;
+}
+
+.circled{
+    border-radius: 50%;
+}
+
+.update-image-modal>button{
+    padding: 5px 20px 5px 20px;
+    border: 2px solid #c3c5c9;
+    outline: none;
+    background-color: white;
+    border-radius: 10px;
+    font-weight: bold;
+}

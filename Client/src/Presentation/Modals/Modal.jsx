@@ -8,6 +8,7 @@ import UpdateVenueModal from "./Modals/UpdateVenueModal/UpdateVenueModal";
 import { ExpenseModal } from "./Modals/ExpenseModal/ExpenseModal";
 import { useModal } from "../Context/ModalContext";
 import { DeleteExpenseModal } from "./Modals/DeleteExpenseModal/DeleteExpense";
+import { UpdateImageModal } from "./Modals/UpdateImageModal/UpdateImageModal";
 
 function Modal() {
   const { popup, modal: modalName, modalProps, hidePopup } = useModal();
@@ -29,6 +30,8 @@ function Modal() {
         return <ExpenseModal {...modalProps} />;
       case "DeleteExpenseModal":
         return <DeleteExpenseModal {...modalProps} />;
+      case "UpdateImageModal":
+        return <UpdateImageModal {...modalProps} />;
       default:
         return <RedirectNotFound />;
     }

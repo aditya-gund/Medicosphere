@@ -1,29 +1,18 @@
 import Calendar from "../../Components/Calendar/Calendar";
 import EventList from "../../Components/EventList/EventList";
+import { useEvents } from "../../Redux/Events/EventsSlice";
 import "./Dashboard.css";
 
 function DashBoard() {
+
+  const {events} = useEvents();
+
   return (
     <div className="Dashboard">
       <EventList />
-      <Calendar events={mockEvents} />
+      <Calendar events={events} />
     </div>
   );
 }
-
-const mockEvents = [
-  {
-    title: "one",
-    date: new Date(),
-  },
-  {
-    title: "four",
-    date: new Date(),
-  },
-  {
-    title: "three",
-    date: new Date(),
-  },
-];
 
 export default DashBoard;
