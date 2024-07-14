@@ -12,7 +12,7 @@ function SelectEvent({ eventList, checkAndUpdateEvents, onUpdate }) {
             topic={topic}
             venue={venue}
             host={host}
-            date={new Date(date.year, date.month, date.year)}
+            date={new Date(date.year, date.month, date.date)}
             time={time}
             checkAndUpdateEvents={checkAndUpdateEvents}
             updateClickHandler={() =>

@@ -15,8 +15,8 @@ export function Expense() {
             product={product}
             topic={topic}
             venue={venue}
-            host={host.email}
-            date={new Date(date.year, date.month, date.year)}
+            host={host}
+            date={new Date(date.year, date.month, date.date)}
             time={time}
             showExpense={() => showExpense(eventId)}
           />

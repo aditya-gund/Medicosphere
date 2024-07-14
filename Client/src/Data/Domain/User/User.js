@@ -1,6 +1,6 @@
 //import { signup } from "../../Datasource/User/User_mock";
 //import { login } from "../../Datasource/User/User_mock";
-import { getUserById, login, updateUserImage } from "../../Datasource/User/User_mock";
+import { getUserByEmail, getUserById, login, updateUserImage } from "../../Datasource/User/User_mock";
 import { signup } from "../../Datasource/User/User_mock";
 import { searchUserByEmail } from "../../Datasource/User/User_mock";
 
@@ -23,14 +23,12 @@ export async function Signup(firstName, lastName, email, password, role) {
 }
 
 export async function GetUserByEmail(email) {
-  return { data: { firstName: "Test Name Reset", lastName: "" } };
-  // try {
-
-  //   const { data } = await getNameByEmail(email);
-  //   return { data, error: null };
-  // } catch (error) {
-  //   return { data: null, error: error };
-  // }
+  try {
+    const { data } = await getUserByEmail(email);
+    return { data, error: null };
+  } catch (error) {
+    return { data: null, error: error };
+  }
 }
 
 export async function GetUserById(userId) {

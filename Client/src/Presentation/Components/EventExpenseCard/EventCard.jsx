@@ -6,13 +6,12 @@ const EventCard = ({
   product,
   topic,
   venue,
-  hostEmail,
-  date,
+  host,
   time,
+  date,
   showExpense,
 }) => {
-  const { host, bgColor } = EventCardViewHandler({
-    hostEmail,
+  const { bgColor } = EventCardViewHandler({
     eventId,
   });
 
@@ -22,7 +21,7 @@ const EventCard = ({
         <span>
           {host.firstName + " " + host.lastName} <br />
         </span>
-        <img src="/user.svg" alt="creater" />
+        <img src={host.profilePic?host.profilePic:"/user.svg"} alt="creater" />
       </div>
       <h4>
         {product}
@@ -37,7 +36,7 @@ const EventCard = ({
       {(
         date.getDate() +
         " " +
-        date.getMonth() +
+        (date.getMonth()+1) +
         " " +
         date.getFullYear()
       ).replaceAll(" ", "/") +

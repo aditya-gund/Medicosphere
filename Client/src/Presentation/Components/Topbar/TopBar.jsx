@@ -1,10 +1,14 @@
 import { useSelector } from "react-redux";
 import "./TopBar.css";
 import { useUser } from "../../Redux/User/UserSlice";
+import { useNavigate } from "react-router-dom";
 
 function TopBar({ setSearch, searchParam }) {
   const firstname = useSelector((state) => state.user.firstName);
-  const {logout} = useUser();
+  const {logout, user} = useUser();
+  const navigate = useNavigate();
+  console.log("Logging profile Pic")
+  console.log(user.profilePic);
 
   return (
     <div className="TopBar">
@@ -20,13 +24,15 @@ function TopBar({ setSearch, searchParam }) {
       <div className="TopBarOptions">
         <div>Hello {firstname}</div>
         <img
-          src="/user.svg"
+          src={user.profilePic? user.profilePic :"/user.svg"}
           alt="user"
           style={{
             borderRadius: "50%",
             backgroundColor: "#dddddd",
             padding: "2px",
+            cursor: "pointer"
           }}
+          onClick={() => {navigate("/Home/user-details/"+user.id)}}
         />
         {/* <img src="/notifications.svg" alt="notifications" /> */}
         <button onClick={() => logout()}>

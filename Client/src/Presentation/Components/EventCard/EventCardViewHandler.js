@@ -1,5 +1,4 @@
-import { GetUserByEmail } from "../../../Data/Domain/User/User";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { CancelEvent } from "../../../Data/Domain/Event/Event";
 import { useModal } from "../../Context/ModalContext";
 
@@ -12,11 +11,11 @@ const bgColorList = [
   "#FDA7DF",
 ];
 
-const EventCardViewHandler = ({ hostEmail, eventId, checkAndUpdateEvents }) => {
-  const [host, setHost] = useState("");
+const EventCardViewHandler = ({ eventId, checkAndUpdateEvents }) => {
+  // const [host, setHost] = useState("");
   const [bgColor, setBgColor] = useState("red");
-  const [loadingVenue, setLoadingVenue] = useState(false);
-  const [loadingHost, setLoadingHost] = useState(false);
+  // const [loadingVenue, setLoadingVenue] = useState(false);
+  // const [loadingHost, setLoadingHost] = useState(false);
   const { showPopup, hidePopup } = useModal();
 
   async function cancelEvent() {
@@ -37,9 +36,9 @@ const EventCardViewHandler = ({ hostEmail, eventId, checkAndUpdateEvents }) => {
     showPopup("CancelEventModal", { onConfirm: async () => await cancelEvent(), eventId: eventId });
   }
 
-  const loading = useMemo(() => {
-    return loadingVenue || loadingHost;
-  }, [loadingVenue, loadingHost]);
+  // const loading = useMemo(() => {
+  //   return loadingVenue || loadingHost;
+  // }, [loadingVenue, loadingHost]);
 
   useEffect(() => {
     let id = eventId.substring(5);
@@ -51,25 +50,24 @@ const EventCardViewHandler = ({ hostEmail, eventId, checkAndUpdateEvents }) => {
     setBgColor(bgColorList[hash]);
   }, [eventId]);
 
-  useEffect(() => {
-    async function updateHostFromEmail() {
-      const { data, error } = await GetUserByEmail(hostEmail);
-      if (!error) {
-        setHost(data);
-      } else {
-        setHost("Could not fetch hostname");
-        console.log(error);
-      }
-      setLoadingHost(false);
-    }
-    setLoadingHost(true);
-    updateHostFromEmail();
-  }, [hostEmail]);
+  // useEffect(() => {
+  //   async function updateHostFromEmail() {
+  //     const { data, error } = await GetUserByEmail(hostEmail);
+  //     if (!error) {
+  //       setHost(data);
+  //     } else {
+  //       setHost("Could not fetch hostname");
+  //       console.log(error);
+  //     }
+  //     setLoadingHost(false);
+  //   }
+  //   setLoadingHost(true);
+  //   updateHostFromEmail();
+  // }, [hostEmail]);
 
   return {
-    host,
     bgColor,
-    loading,
+    // loading,
     ShowCancelMenu,
   };
 };

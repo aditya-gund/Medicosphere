@@ -10,8 +10,8 @@ const bgColorList = [
   "#FDA7DF",
 ];
 
-const EventCardViewHandler = ({ hostEmail, eventId }) => {
-  const [host, setHost] = useState("");
+const EventCardViewHandler = ({ eventId }) => {
+  // const [host, setHost] = useState("");
   const [bgColor, setBgColor] = useState("red");
 
   useEffect(() => {
@@ -24,21 +24,23 @@ const EventCardViewHandler = ({ hostEmail, eventId }) => {
     setBgColor(bgColorList[hash]);
   }, [eventId]);
 
-  useEffect(() => {
-    async function updateHostFromEmail() {
-      const { data, error } = await GetUserByEmail(hostEmail);
-      if (!error) {
-        setHost(data);
-      } else {
-        setHost("Could not fetch hostname");
-        console.log(error);
-      }
-    }
-    updateHostFromEmail();
-  }, [hostEmail]);
+  // useEffect(() => {
+  //   async function updateHostFromEmail() {
+  //     const { data, error } = await GetUserByEmail(hostEmail);
+  //     console.log("Fetched user ");
+  //     console.log(data);
+  //     if (!error) {
+  //       setHost(data);
+  //     } else {
+  //       setHost("Could not fetch hostname");
+  //       console.log(error);
+  //     }
+  //   }
+  //   updateHostFromEmail();
+  // }, [hostEmail]);
 
   return {
-    host,
+    // host,
     bgColor
   };
 };

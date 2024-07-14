@@ -6,7 +6,7 @@ const users = [
     email: "test1@gmail.com",
     password: "password",
     role: "ADMIN",
-    profilePic: null,
+    profilePic: "https://static1.squarespace.com/static/656f4e4dababbd7c042c4946/657236350931ee4538eea52c/65baf15103d8ad2826032a8a/1707422532886/how-to-stop-being-a-people-pleaser-1_1.jpg?format=1500w",
   },
   {
     id: 2,
@@ -65,6 +65,16 @@ export function getUserById(id) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const data = users.filter((user) => user.id === Number(id));
+      if (data.length === 0) reject(new Error("User not found"));
+      else resolve({ data: data[0], status: 200 });
+    }, 3000);
+  });
+}
+
+export function getUserByEmail(email) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const data = users.filter((user) => user.email === email);
       if (data.length === 0) reject(new Error("User not found"));
       else resolve({ data: data[0], status: 200 });
     }, 3000);

@@ -9,7 +9,7 @@ const Events = [
       lastName: "Mishra",
       email: "test1@gmail.com",
       role: "ADMIN",
-      profilePic: null,
+      profilePic: "https://static1.squarespace.com/static/656f4e4dababbd7c042c4946/657236350931ee4538eea52c/65baf15103d8ad2826032a8a/1707422532886/how-to-stop-being-a-people-pleaser-1_1.jpg?format=1500w",
     },
     date: new Date(),
     time: "12:00 AM",
@@ -26,7 +26,7 @@ const Events = [
         lastName: "Mishra",
         email: "test1@gmail.com",
         role: "ADMIN",
-        profilePic: null,
+        profilePic: "https://static1.squarespace.com/static/656f4e4dababbd7c042c4946/657236350931ee4538eea52c/65baf15103d8ad2826032a8a/1707422532886/how-to-stop-being-a-people-pleaser-1_1.jpg?format=1500w",
       },
       {
         firstName: "Aditya",
@@ -64,7 +64,7 @@ const Events = [
         lastName: "Mishra",
         email: "test1@gmail.com",
         role: "ADMIN",
-        profilePic: null,
+        profilePic: "https://static1.squarespace.com/static/656f4e4dababbd7c042c4946/657236350931ee4538eea52c/65baf15103d8ad2826032a8a/1707422532886/how-to-stop-being-a-people-pleaser-1_1.jpg?format=1500w",
       },
       {
         firstName: "Aditya",
